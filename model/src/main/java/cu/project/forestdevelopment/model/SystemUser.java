@@ -24,6 +24,16 @@ public class SystemUser {
 
     private String password;
 
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     @Enumerated(EnumType.STRING) //With @Enumerated(EnumType.STRING), we can safely add new enum values or change our enum's order. However, renaming an enum value will still break the database data.
     private SystemUserRole userRole;
 

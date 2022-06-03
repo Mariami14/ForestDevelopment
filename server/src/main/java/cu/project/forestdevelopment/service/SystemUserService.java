@@ -7,8 +7,13 @@ import java.util.List;
 
 public interface SystemUserService {
 
+    Boolean authentication(String userName, String password);
+
     List<SystemUser> findAll();
 
     SystemUser addSystemUser(SystemUser systemUser);
+
+    Boolean updateSystemUser(SystemUser systemUser);
+
 
 }
