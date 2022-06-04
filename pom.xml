@@ -12,7 +12,7 @@
     <groupId>cu.project</groupId>
     <artifactId>forestdevelopment</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>forestdevelopment</name>
+    <name>Forest Development Module</name>
     <description>Forest Development project for Bachelor</description>
     <modules>
         <module>core</module>
@@ -61,45 +61,10 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>cu.project</groupId>
-            <artifactId>forestdevelopment</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>cu.project</groupId>
-            <artifactId>forestdevelopment</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>cu.project</groupId>
-            <artifactId>forestdevelopment</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>cu.project</groupId>
-            <artifactId>forestdevelopment</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.10</version>
         </dependency>
     </dependencies>
-
-
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

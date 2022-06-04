@@ -10,7 +10,7 @@
     <groupId>cu.group</groupId>
     <artifactId>utils</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>forestdevelopment</name>
+    <name>Utils Modules</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>11</java.version>
@@ -27,14 +27,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>
