@@ -16,10 +16,11 @@ export const Container = styled.div`
 export const Regform = styled.div`
       display: flex;
       margin: 0 auto ;
-      max-width: 600px;
+      max-width: 800px;
       border: white;
       padding-top: 50px;
-      
+      padding-bottom: 50px;
+      max-height: 600px;
 `
 
 export const PageWelcome = styled.div`
@@ -131,6 +132,7 @@ export const Registerbtn = styled.button`
 
 export const Registr = styled.div`
     padding: 16px;
+    align-items: center;
     
 `
 export const InputElements = styled.div`

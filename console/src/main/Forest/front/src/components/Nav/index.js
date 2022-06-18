@@ -14,6 +14,7 @@ const Navigation = () => {
                     <NavLink smooth={true} offset= {-70} to='references'>Feedback</NavLink>
                     <NavLink smooth={true} offset= {-70} to='footer'>Contact</NavLink>
                     <NavBtn smooth={true} offset= {-70} to="/Login">Login</NavBtn>
+                    <NavBtn smooth={true} offset= {-70} to="/Volantor">Volantor</NavBtn>
                 </NavLinks>
             </NavContainer>
         </Nav>

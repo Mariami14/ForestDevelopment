@@ -14,15 +14,44 @@ import {
     PageCreateBtn,
     PageCreateBtnLink,
     DescrText,
-    PageCreateText,Registr,Registerbtn
+    PageCreateText, Registr, Registerbtn
 } from "./LoginElements";
 import {DescrBtn, DescrBtnLink} from "../MainPage/MainPageElements";
 import {FooterBg, FooterIcon, FooterIcons} from "../Footer/FooterElemet";
 import {FacebookIcon, InstagramIcon, LinkedinIcon, WhatsappIcon} from "../svg";
-import {Axios as axios} from "axios";
+
+import Axios, * as others from 'axios';
 
 const LoginElements = () => {
-    const [userinfo, setUserInfo] = useState([]);
+    const [userInfo, setUserInfo] = useState({});
+
+    const handleChange = e => {
+        const {name, value} = e.target;
+
+        setUserInfo(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+
+    const register = () => {
+        const systemuser = {
+            firstName: userInfo['firstName'],
+            lastName: userInfo['lastName'],
+            email: userInfo['email'],
+            userName: userInfo['userName'],
+            password: userInfo['password'],
+            userRole: 'USER',
+            id:0
+        };
+        console.log(systemuser);
+        Axios.post("http://localhost:8080/customer-service-api/addsystemuser", systemuser)
+            .then((response) => {
+            console.log(response);
+        })
+    };
+
 
     return (
         <>
@@ -56,27 +85,21 @@ const LoginElements = () => {
                             </Icon>
                         </Icons>
                         <InputElements>
-                            <label><input type="radio" value="Volantor" name="name"/>Volantor</label>
-                            <label><input type="radio" value="Benefactor" name="name"/>Benefactor</label>
+                            <label><input type="radio" value="Volantor" name="role"
+                                          onChange={handleChange}/>Volantor</label>
+                            <label><input type="radio" value="Benefactor" name="role" onChange={handleChange}/>Benefactor
+                            </label>
                         </InputElements>
                         <Registr>
-                            <input id = "userEmal" type="text" placeholder="Enter Email" name="email" />
-                                <input type="password" placeholder="Enter Password" name="psw" />
-                                    <input type="password" placeholder="Repeat Password" name="psw-repeat" />
-                                            <Registerbtn>Register</Registerbtn>
-                                            <button onClick={()=>{
-                                                fetch("http://localhost:8080/customer-service-api/findall")
-                                                    .then((res) => res.json())
-                                                    .then((json) => {
-                                                        setUserInfo(json);
-                                                        console.log(json);
-                                                        console.log(userinfo);
-                                                        console.log("sdfsdfsdf");
-                                                        console.log(json[0]);
-                                                        console.log(json[0].email);
-                                                        document.getElementById("userEmal").value = json[0].email;
-                                                    })
-                                            }}>TEST</button>
+                            <input type="text" placeholder="Enter Firstname" name="firstName" onChange={handleChange}/>
+                            <input type="text" placeholder="Enter Lastname" name="lastName" onChange={handleChange}/>
+                            <input type="text" placeholder="Enter Username" name="userName" onChange={handleChange}/>
+                            <input type="text" placeholder="Enter Email" name="email" onChange={handleChange}/>
+                            <input type="password" placeholder="Enter Password" name="password"
+                                   onChange={handleChange}/>
+                            <input type="password" placeholder="Repeat Password" name="passwordRepeat"
+                                   onChange={handleChange}/>
+                            <Registerbtn onClick={register}>Register</Registerbtn>
                         </Registr>
                     </PageCreate>
                 </Regform>
@@ -84,7 +107,7 @@ const LoginElements = () => {
             <Footer/>
         </>
 
-);
+    );
 };
 
 export default LoginElements;
