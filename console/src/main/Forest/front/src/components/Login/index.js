@@ -19,8 +19,7 @@ import {
 import {DescrBtn, DescrBtnLink} from "../MainPage/MainPageElements";
 import {FooterBg, FooterIcon, FooterIcons} from "../Footer/FooterElemet";
 import {FacebookIcon, InstagramIcon, LinkedinIcon, WhatsappIcon} from "../svg";
-
-import Axios, * as others from 'axios';
+import axios from "../../axios";
 
 const LoginElements = () => {
     const [userInfo, setUserInfo] = useState({});
@@ -36,7 +35,7 @@ const LoginElements = () => {
 
 
     const register = () => {
-        const systemuser = {
+        const systemUser = {
             firstName: userInfo['firstName'],
             lastName: userInfo['lastName'],
             email: userInfo['email'],
@@ -44,12 +43,34 @@ const LoginElements = () => {
             password: userInfo['password'],
             userRole: 'USER',
             id:0
-        };
-        console.log(systemuser);
-        Axios.post("http://localhost:8080/customer-service-api/addsystemuser", systemuser)
-            .then((response) => {
-            console.log(response);
-        })
+       };
+// /*        const requestOptions = {
+//             method: 'POST',
+//             mode: 'no-cors'
+//             headers: { 'Content-Type': 'application/json' },
+//             body: JSON.stringify({ systemUser })
+//         };
+//         fetch('http://localhost:8080/customer-service-api/addsystemuser', requestOptions)
+//
+//             .then(response => console.log(response.json()));
+//     }*/
+//
+//         Axios.get("http://localhost:8080/customer-service-api/findall", {headers:{"Access-Control-Allow-Origin": "*",'Content-Type': 'application/json',}})
+//             .then((response) => {
+//             console.log(response);
+//         })
+
+        axios.post('/customer-service-api/addsystemuser', {
+            firstName: userInfo['firstName'],
+            lastName: userInfo['lastName'],
+            email: userInfo['email'],
+            userName: userInfo['userName'],
+            password: userInfo['password'],
+            userRole: 'USER',
+            id:0
+        }).then((response) => {
+             console.log(response);
+       })
     };
 
 
