@@ -4,9 +4,8 @@ package cu.project.forestdevelopment.controller;
 import cu.project.forestdevelopment.model.SystemUser;
 import cu.project.forestdevelopment.service.SystemUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,19 +21,27 @@ public class SystemUserController {
         return systemUserService.findAll();
     }
 
-    @GetMapping("/addsystemuser")
-    public SystemUser addSystemUser(SystemUser systemUser) {
-        return systemUserService.addSystemUser(systemUser);
+    @PostMapping("/addsystemuser")
+    public ResponseEntity addSystemUser(@RequestBody SystemUser systemUser) {
+        try {
+            return ResponseEntity.ok(systemUserService.addSystemUser(systemUser));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+
     }
-    // dasamatebelia yvelaarsebuli servisis kontrolerebi
-    @GetMapping("/authentication")
-     public Boolean authentication (SystemUser systemUser) {
-        return systemUserService.authentication(systemUser.getUsername(), systemUser.getPassword());
-    }
-    @GetMapping("/update")
-    public Boolean updateSystemUser (SystemUser systemUser){
+
+    @GetMapping( "/authentication")
+     public ResponseEntity authentication (@RequestParam String username,@RequestParam String password) throws Exception {
+        return systemUserService.authentication(username, password); }
+
+    @PutMapping("/updatesystemuser")
+    public Boolean updateSystemUser (@RequestBody SystemUser systemUser){
         return systemUserService.updateSystemUser(systemUser);
     }
+
+    @DeleteMapping("/deletesystemuser")
+    public Boolean deleteSystemUser (@RequestParam Long id) {return  systemUserService.deleteSystemUser(id); }
 
 
 }

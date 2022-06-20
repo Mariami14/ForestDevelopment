@@ -7,5 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SystemUserRepository extends JpaRepository<SystemUser,Long> {
      SystemUser findSystemUserByUsername(String username); // lanas gadocemuli filtristvis specifiuri search bazis select
-     SystemUser findSystemUserByLastNameAndFirstName(String lastName, String firstName);
 }

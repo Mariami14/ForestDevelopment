@@ -4,6 +4,8 @@ import cu.project.forestdevelopment.repository.SystemUserRole;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -14,6 +16,7 @@ public class SystemUser {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
+
     private long id;
 
     private String firstName;
@@ -26,13 +29,9 @@ public class SystemUser {
 
     private String username;
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
+/*
+    private List<Progress> listOfActivity = new ArrayList<>(); // maifiqreee
+*/
 
     @Enumerated(EnumType.STRING) //With @Enumerated(EnumType.STRING), we can safely add new enum values or change our enum's order. However, renaming an enum value will still break the database data.
     private SystemUserRole userRole;
@@ -68,6 +67,15 @@ public class SystemUser {
     public void setId(long id) {
         this.id = id;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
 
     public String getFirstName() {
         return firstName;
