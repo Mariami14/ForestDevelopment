@@ -6,9 +6,5 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface PlantsRepository extends JpaRepository <Plants,Long> {
-  Plants findPlantsByPlantName (String plantName);
-  Plants findPlantsByLocation (String Location);
-  Plants findByAmount (int amount);
-  Plants findByPrice (int price);
+public interface PlantsRepository extends JpaRepository<Plants, Long> {
 }

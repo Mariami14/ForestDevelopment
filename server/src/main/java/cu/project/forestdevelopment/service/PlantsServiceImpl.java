@@ -44,6 +44,6 @@ public class PlantsServiceImpl implements PlantsService{
     @Override
     public List<Plants> findPlants() {
         return plantsRepository.findAll();
-        //Todo rogor gadavcet find is metodebi tu list unda mivawodo?
+
     }
 }
