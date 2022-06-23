@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface LocationsService {
 
-    Locations addLocations(Locations locations);
+    Locations addLocations(Locations locations) throws Exception;
 
     boolean updateLocations(Locations locations);
 

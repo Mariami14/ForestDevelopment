@@ -4,6 +4,7 @@ package cu.project.forestdevelopment.controller;
 import cu.project.forestdevelopment.model.Plants;
 import cu.project.forestdevelopment.service.PlantsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,17 +16,22 @@ public class PlantsController {
     private PlantsService plantsService;
 
     @PostMapping("/addplant")
-    public Plants addPlants (Plants plants) throws Exception{
-        return plantsService.addPlants(plants);
+    public ResponseEntity addPlants (@RequestBody Plants plants) throws Exception{
+        try {
+            return ResponseEntity.ok(plantsService.addPlants(plants));
+        }
+        catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @PutMapping("/updateplant")
-    public boolean updatePlants (Plants plants){
+    public boolean updatePlants (@RequestBody Plants plants){
         return plantsService.updatePlants(plants);
     }
 
     @DeleteMapping("/deletemapping")
-    public boolean deletePlants(Long id){
+    public boolean deletePlants(@RequestParam Long id){
         return plantsService.deletePlants(id);
     }
 
@@ -34,5 +40,5 @@ public class PlantsController {
         return plantsService.findPlants();
     }
 
-
+// todo pagination
 }
