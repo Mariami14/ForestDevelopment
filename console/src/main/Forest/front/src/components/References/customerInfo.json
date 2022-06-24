@@ -1,0 +1,52 @@
+
+[
+
+    {
+        "img" : "../sally.svg",
+        "name" : "Sally",
+        "surname" : "München",
+        "text" : "“die App kann ich empfehlen, da man Singles trifft, die wirklich auf der Suche nach einer festen Beziehung sind ...”"
+    },
+    {
+        "img" : "./images/customers/monica.svg",
+        "name" : "Monica",
+        "surname" : "München",
+        "text" : "“... die App kann ich empfehlen, da man Singles trifft, die wirklich auf der Suche nach einer festen Beziehung sind ...”"
+    },
+    {
+        "img" : "./images/customers/lena.svg",
+        "name" : "Lena",
+        "surname" : "Berlin",
+        "text" : "“... die App kann ich empfehlen, da man Singles trifft, die wirklich auf der Suche nach einer festen Beziehung sind ...”"
+    },
+    {
+        "img" : "./images/customers/george.svg",
+        "name" : "George",
+        "surname" : "München",
+        "text" : "“... die App kann ich empfehlen, da man Singles trifft, die wirklich auf der Suche nach einer festen Beziehung sind ...”"
+    },
+    {
+        "img" : "./images/customers/manuel.svg",
+        "name" : "Manuel",
+        "surname" : "Berlin",
+        "text" : "“... die App kann ich empfehlen, da man Singles trifft, die wirklich auf der Suche nach einer festen Beziehung sind ...”"
+    },
+    {
+        "img" : "./images/customers/matthew.svg",
+        "name" : "Matthew",
+        "surname" : "München",
+        "text" : "“... die App kann ich empfehlen, da man Singles trifft, die wirklich auf der Suche nach einer festen Beziehung sind ...”"
+    },
+    {
+        "img" : "./images/customers/thomas.svg",
+        "name" : "Thomas",
+        "surname" : "München",
+        "text" : "“... die App kann ich empfehlen, da man Singles trifft, die wirklich auf der Suche nach einer festen Beziehung sind ...”"
+    },
+    {
+        "img" : "./images/customers/marry.svg",
+        "name" : "Marry",
+        "surname" : "Berlin",
+        "text" : "“... die App kann ich empfehlen, da man Singles trifft, die wirklich auf der Suche nach einer festen Beziehung sind ...”"
+    }
+]

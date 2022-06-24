@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import {NavLink as Link} from 'react-router-dom'
 
-
 export const Container = styled.div`
       max-width: 1800px;
       min-height: 100vh;
@@ -16,15 +15,16 @@ export const Container = styled.div`
 export const Regform = styled.div`
       display: flex;
       margin: 0 auto ;
-      
+      max-width: 800px;
       border: white;
       padding-top: 50px;
-      padding-bottom: 50px;
-     
+      max-height: 600px;
+      
 `
 
 export const PageWelcome = styled.div`
-        border-radius:  20px 0 0 20px;
+        
+        border-radius:  0 20px 20px 0; 
         background-color:#b0aca2;
         min-height: 60vh;
         width: 50%;
@@ -33,18 +33,20 @@ export const PageWelcome = styled.div`
         justify-items: end;
         display: flex;
         flex-direction: column;
+        z-index: 5;
         
 `
 
 export const PageCreate = styled.div`
         background-color: white;
+        border-radius:  20px 20px 20px 20px;
         min-height: 60vh; 
         width: 50%;
         padding: 10px;
         display: flex;
         flex-direction: column;
-        border-radius:  20px 20px 20px 20px; 
-        margin-left: -20px;
+        margin-right: -20px;
+        z-index: 10;
 `
 
 export const PageCreateText = styled.div`
@@ -113,17 +115,17 @@ export const Icons = styled.div`
 `
 
 
-export const Registerbtn = styled.button`
+export const Signinbtn = styled.button`
       background-color: #b0aca2;
       color: white;
       padding: 10px 10px;
       align-items: center;
       width: 100%;
+      margin-top: 100px;
       border: none;
       cursor: pointer;
       border-radius: 5px;
       opacity: 0.9;
-      margin-top: 10px;
         &:hover{
          opacity:1;} 
     
@@ -133,7 +135,6 @@ export const Registerbtn = styled.button`
 
 export const Registr = styled.div`
     padding: 16px;
-    align-items: center;
     
 `
 export const InputElements = styled.div`
@@ -157,10 +158,5 @@ export const Icon = styled.div`
     &:hover{
         background: white;
     }
-`
-
-export const Error = styled.p`
-    color: #a82a2c;
-    text-align: center;
 `
 

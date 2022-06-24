@@ -1,0 +1,52 @@
+[
+    {
+        "src" : "./images/advantages/matchForYou.svg",
+        "header" : "We match for you",
+        "text" : "Wir suchen dir dein Match und sind keine Dating-Plattform in der dein Profil öffentlich sichtbar ist, sondern wir sind eine Partnervermittlung."
+    },
+    {
+        "src" : "./images/advantages/fokus.svg",
+        "header" : "Fokus",
+        "text" : "Klarer Fokus Du hast immer nur ein Match gleichzeitig sodass ihr euch beim chatten fokussiert kennenlernen könnt."
+    },
+    {
+        "src" : "./images/advantages/matchKriterien.svg",
+        "header" : "Matchkriterien",
+        "text" : "Die Matchkriterien Auf Basis mehrerer Persönlichkeitskriterien und gesundem Menschenverstand suchen wir dein passendes Match aus. Unser Vorgehen ist gemeinsam mit Universitäten und Beziehungsratgebern konzipiert worden."
+    },
+    {
+        "src" : "./images/advantages/entmachen.svg",
+        "header" : "Entmatchen",
+        "text" : "Das Entmatchen Kein \"Ghosting\", denn das Entmatchen geschieht auf eine wertschätzende Art und Weise. Die Begründung wird deinem Match mitgeteilt und wir können dazu lernen und die Krieterien bei deinem nächsten Match verbessern."
+    },
+    {
+        "src" : "./images/advantages/bezeihungen.svg",
+        "header" : "Ernsthafte Beziehungen",
+        "text" : "Unsere Mitglieder haben ausschließlich den Wunsch einen festen Partner für eine zukunftsorientiere Beziehung zu finden."
+    },
+    {
+        "src" : "./images/advantages/aussehen.svg",
+        "header" : "Das Aussehen",
+        "text" : "Das Aussehen fließt in die Matchkriterien mit ein, aber ist nicht der Hauptfaktor wie bei anderen Dating-Plattformen. Die Mitglieder können deine Bilder nicht sehen."
+    },
+    {
+        "src" : "./images/advantages/echteProfile.svg",
+        "header" : "Echte Profile",
+        "text" : "Durch die Profilverifizierung und der Überprüfung durch unserer Mitarbeiter wird jedes Mitglied auf Echtheit überprüft."
+    },
+    {
+        "src" : "./images/advantages/faireKosten.svg",
+        "header" : "Faire Kosten",
+        "text" : "Wir sind sehr transparent in unseren Preisen und die Mitgliedschaft werden nicht automatisch verlängert sondern benötigen deine Zustimmung."
+    },
+    {
+        "src" : "./images/advantages/funktionen.svg",
+        "header" : "Funktionen",
+        "text" : "Die Funktionen Bei einem Match bieten wir dir die Möglichkeit zu chatten und euch kennenzulernen. Dabei ist euch überlassen wie ihr dann fortfahren wollt."
+    },
+    {
+        "src" : "./images/advantages/garantie.svg",
+        "header" : "Garantie",
+        "text" : "Deine Garantie Falls du während deiner Mitgliedschaft kein Match erhalten hast wird deine Laufzeit kostenlos um die gleiche Dauer erhöht. Wir bitte dich um etwas Geduld, denn es kann manchmal etwas dauern."
+    }
+]
