@@ -1,11 +1,14 @@
-import React from 'react';
+import React , { Component }  from 'react';
 import Nav from "../Nav";
 import Footer from "../Footer";
+import logo from '../../images/logo.png';
+import Select from 'react-select'
 import {
     Image,
     PageWelcome,
     Regform,
     PageCreate,
+    MyTitle,
     DescrTextCreate,
     InputElements,
     Icon,
@@ -13,14 +16,50 @@ import {
     Container,
     PageCreateBtn,
     PageCreateBtnLink,
-    DescrText,
-    PageCreateText,Registr,Signinbtn
+    DescrText,Drop,Disc,Nm,Loc,
+    PageCreateText,Registr,Signinbtn,Pic,Products,Product,BtnLink,Btn
 } from "./VolantorElements";
-import {DescrBtn, DescrBtnLink} from "../MainPage/MainPageElements";
-import {FooterBg, FooterIcon, FooterIcons} from "../Footer/FooterElemet";
-import {FacebookIcon, InstagramIcon, LinkedinIcon, WhatsappIcon} from "../svg";
+
+
 
 const VolantorElements = () => {
+    const options = [
+        { value: 'processing', label: 'Processing' },
+        { value: 'done', label: 'Done' }
+    ];
+
+    const customStyles = {
+        menu: (provided, state) => ({
+            ...provided,
+            color: '#ad5d50',
+        }),
+        control: base => ({
+            ...base,
+            minWidth:'150px',
+            border: '1px solid #ad5d50',
+            // This line disable the blue border
+            boxShadow: 'none',
+            '&:hover':{
+                border: '1px solid #ad5d50'
+            },
+            cursor: 'pointer'
+            // This line disable the blue border
+        }),
+        option: styles => ({
+        ...styles,
+            backgroundColor: '',
+            '&:hover': {backgroundColor: '#DDDDDD'},
+            color: '#ad5d50'
+        })
+        };
+
+    const MySelect = () => (
+        <Select
+            menuColor='red'
+            styles={customStyles}
+            Width='600px'
+            options={options} />
+    );
     return (
         <>
             <Nav/>
@@ -29,38 +68,45 @@ const VolantorElements = () => {
                 <Regform>
 
                     <PageCreate>
+                        <MyTitle>My Profile</MyTitle>
+                        <Products>
+                            <Product>
+                                <Pic src={logo}/>
+                                <Drop>
+                               <MySelect/>
+                                </Drop>
+                            </Product>
 
-                        <DescrTextCreate> Sign in into you account </DescrTextCreate>
-                        <Icons>
-                            <Icon className={'footerIcon second'}>
-                                <WhatsappIcon/>
-                            </Icon>
-                            <Icon className={'footerIcon second'}>
-                                <InstagramIcon/>
-                            </Icon>
-                            <Icon className={'footerIcon second'}>
-                                <FacebookIcon/>
-                            </Icon>
-                            <Icon className={'footerIcon second'}>
-                                <LinkedinIcon/>
-                            </Icon>
-                        </Icons>
+                            <Product>
+                                <Disc>
+                                <Pic src={logo}/>
+                                <Nm></Nm>
+                                <Loc></Loc>
+                                </Disc>
+                                <Drop>
+                                    <MySelect/>
+                                </Drop>
+                            </Product>
 
-                        <Registr>
-                            <input type="text" placeholder="Enter Email" name="email" />
-                                <input type="password" placeholder="Enter Password" name="psw" />
+                            <Product>
+                                <Pic src={logo}/>
+                                <Drop>
 
-                                            <Signinbtn>Sign in</Signinbtn>
-                        </Registr>
+                                    <MySelect/>
+                                </Drop>
+                            </Product>
+
+                            <Product>
+                                <Pic src={logo}/>
+                                <Drop>
+                                    <MySelect/>
+                                </Drop>
+                            </Product>
+
+
+                        </Products>
                     </PageCreate>
-                    <PageWelcome>
-                        <PageCreateText>
-                            <DescrText>Hello Friend</DescrText>
-                        </PageCreateText>
-                        <PageCreateBtn>
-                            <PageCreateBtnLink to="/Login">Log in</PageCreateBtnLink>
-                        </PageCreateBtn>
-                    </PageWelcome>
+
                 </Regform>
             </Container>
             <Footer/>

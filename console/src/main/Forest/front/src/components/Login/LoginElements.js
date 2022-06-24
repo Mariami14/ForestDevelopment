@@ -16,11 +16,11 @@ export const Container = styled.div`
 export const Regform = styled.div`
       display: flex;
       margin: 0 auto ;
-      max-width: 800px;
+      
       border: white;
       padding-top: 50px;
       padding-bottom: 50px;
-      max-height: 600px;
+     
 `
 
 export const PageWelcome = styled.div`
@@ -123,6 +123,7 @@ export const Registerbtn = styled.button`
       cursor: pointer;
       border-radius: 5px;
       opacity: 0.9;
+      margin-top: 10px;
         &:hover{
          opacity:1;} 
     
@@ -156,5 +157,10 @@ export const Icon = styled.div`
     &:hover{
         background: white;
     }
+`
+
+export const Error = styled.p`
+    color: #a82a2c;
+    text-align: center;
 `
 
