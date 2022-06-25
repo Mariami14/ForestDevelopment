@@ -42,6 +42,7 @@ public class SystemUserController {
 
     @DeleteMapping("/deletesystemuser")
     public Boolean deleteSystemUser (@RequestParam Long id) {return  systemUserService.deleteSystemUser(id); }
+//todo response entity ebia dasamatebeli
 
 
 }

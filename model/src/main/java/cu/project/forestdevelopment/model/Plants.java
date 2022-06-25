@@ -8,7 +8,6 @@ import javax.persistence.*;
 public class Plants {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private long id;
 
     private String plantName;
@@ -19,7 +18,6 @@ public class Plants {
 
     private int price;
 
-    private String image;
 
     public Plants(long id, String plantName, String location, int amount, int price, String image) {
         this.id = id;
@@ -27,7 +25,6 @@ public class Plants {
         this.location = location;
         this.amount = amount;
         this.price = price;
-        this.image = image;
     }
 
     public Plants() {
@@ -74,14 +71,6 @@ public class Plants {
         this.price = price;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     @Override
     public String toString() {
         return "Plants{" +
@@ -90,7 +79,7 @@ public class Plants {
                 ", location='" + location + '\'' +
                 ", amount=" + amount +
                 ", price=" + price +
-                ", image='" + image + '\'' +
                 '}';
     }
 }
+
