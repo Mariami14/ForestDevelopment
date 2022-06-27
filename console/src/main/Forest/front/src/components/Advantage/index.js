@@ -4,6 +4,7 @@ import {AboutUsHeaderText, Container} from "../AboutUs";
 import {Orange, Purple} from "../VideoSection/videoSectionElement";
 import Advantages from "./Advantages";
 import advantagesInfo from "./advantagesInfo.json"
+import forest from '../../images/forest.jpg'
 
 const Advantage = () => {
     return (
@@ -16,7 +17,7 @@ const Advantage = () => {
                 <div className="flex flex-wrap justify-between justify-self-stretch">
                     { advantagesInfo.map((info , index) =>
                         <Advantages key={index}
-                                    src={info.src}
+                                    src={`${info.url}`}
                                     header={info.header}
                                     text={info.text}
                         />

@@ -2,6 +2,7 @@ import React from 'react';
 import {Orange, Purple} from "../VideoSection/videoSectionElement";
 import commentIcon from '../../images/red.png'
 import commentIconWithHeart from '../../images/green.png'
+import forest from '../../images/forest.jpg'
 import {
     AboutUsBoldText,
     AboutUsHeaderText,

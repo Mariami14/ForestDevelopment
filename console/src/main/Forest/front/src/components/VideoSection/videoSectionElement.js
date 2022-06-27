@@ -67,26 +67,41 @@ export const AppStore = styled.img`
 export const VideoDiv = styled.div`
     position: relative;
     content: '';
-    width: 682px;
+    width: 672px;
     height: 450px;
     background: #b0aca2;
     border-radius: 24px;
     margin-bottom: 24px;
 `
 export const Image = styled.div`
-       height: 300px;
+    
        display: flex;
        z-index: 10;
-       padding-top: 10%;
+       width: 682px;
+       height: 450px;
        justify-items: center;
-       justify-content: space-around;
+       border-radius: 24px;
+     
+       
         
 `;
+
+export const Imgforest = styled.img`
+       justify-items: center;
+       border-radius: 24px;
+    
+`
 export const PlayBtn = styled.img`
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     left: -125px;
+    
+`
+
+export const Tree = styled.img`
+    left: 0;
+    max-width: 50px;
     
 `
 

@@ -1,13 +1,15 @@
 import styled from "styled-components";
+import forest from './forest.jpg'
 
-export const Container = styled.div`
+export const Container= styled.div`
     display: flex;
     flex-direction: column;
-    max-width: 1200px;
+    
     padding: 100px 20px;
     margin: 0 auto;
     justify-content: space-between;
     position: relative;
+    background-image: url(${forest});
 `
 
 export const AboutUsHeaderText = styled.h2`

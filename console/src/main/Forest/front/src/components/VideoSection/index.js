@@ -3,14 +3,18 @@ import appStore from '../../images/appStore.svg';
 import googlePlay from '../../images/googlePlay.svg';
 import playbtn from '../../images/playBtn.svg';
 import main from '../../images/Main.png';
+import tree from '../../images/MainTree.png';
+import forest from '../../images/forest.jpg';
+import commentIconWithHeart from '../../images/green.png'
 import {
-    AppStore,
+    AppStore,Imgforest,
     Container, GooglePlay, Orange, Purple, StoreLogosDiv,
     TextArea, TextHeader, Text,
     TextHeaderSub,
     VideoArea, VideoDiv,
-    VideoSectionDiv, TextCenter, PlayBtn,Image
+    VideoSectionDiv, TextCenter, PlayBtn,Image,Tree
 } from "./videoSectionElement";
+import {CommentIcon, CommentIconWithHeart} from "../AboutUs";
 
 
 const VideoSection = () => {
@@ -19,7 +23,7 @@ const VideoSection = () => {
             <Container>
                 <TextArea>
                     <TextHeader>
-                        <Orange>Forest</Orange><br/>
+                        <Orange>Forest <Tree src={tree}/></Orange><br/>
                         <Purple>Development</Purple>
                     </TextHeader>
                     <TextHeaderSub>
@@ -31,7 +35,7 @@ const VideoSection = () => {
                 <VideoArea>
                     <VideoDiv>
                         <PlayBtn src={playbtn}/>
-                        <Image><img src={main} alt="main" />
+                        <Image><Imgforest src={forest} alt="main" />
                         </Image>
                     </VideoDiv>
 

@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import {NavLink as Link} from 'react-router-dom'
-import React from "react";
 
 
 export const Container = styled.div`
@@ -174,7 +173,7 @@ export const Products = styled.div`
 
 export const Product = styled.div`
 
-  width: 40%;
+  width: 45%;
   margin-bottom: 30px;
   border-radius:  20px 20px 20px 20px;
   padding: 10px 20px;
@@ -210,22 +209,6 @@ export const Drop = styled.div`
 export const Disc = styled.div`
     display: flex;
 `
-
-export const EmailName = styled.div`
-      padding: 5px 0 0 20px ;
-      color: #ad5d50;
-      font-style: oblique;
-      font-weight: 500;
-`
-export const MyOrderTitle = styled.div`
-      padding: 5px 0 0 20px ;
-      color: #ad5d50;
-      font-style: oblique;
-      font-weight: 500;
-      font-size: 25px;
-      text-align: center;
-`
-
 
 export const Inf = styled.div`
 
@@ -267,6 +250,32 @@ export const BtnLink = styled(Link)`
         background: #fff;
         color: #ad5d50;
         border-color: #ad5d50; }
+        
+`;
+
+export const SelectProcessing = styled.p`
+       
+      border: 2px solid #DFCE77;
+      border-radius:3px;
+      min-width: 150px;
+      text-align: center;
+      padding: 10px 10px;
+      color:#DFCE77 ;
+      
+      
+        
+`;
+
+export const SelectDone = styled.p`
+       
+      border: 2px solid greenyellow;
+      border-radius:3px;
+      min-width: 150px;
+      text-align: center;
+      padding: 10px 10px;
+      color: greenyellow ;
+      
+      
         
 `;
 

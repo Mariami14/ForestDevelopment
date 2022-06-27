@@ -95,8 +95,8 @@ const LoginElements = () => {
                         </Icons>
                         <InputElements>
                             <label><input type="radio" value="USER" name="role" checked
-                                          onChange={handleChange}/>Volantor</label>
-                            <label><input type="radio" value="ADMIN" name="role" onChange={handleChange}/>Benefactor
+                                          onChange={handleChange}/>Volunteer</label>
+                            <label><input type="radio" value="ADMIN" name="role" onChange={handleChange}/>Sponsor
                             </label>
                         </InputElements>
                         <Registr>

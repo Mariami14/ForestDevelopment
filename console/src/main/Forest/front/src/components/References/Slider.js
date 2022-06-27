@@ -4,6 +4,7 @@ import { FreeMode } from "swiper";
 import CustomersCard from "./CustomersCard";
 import { Autoplay } from 'swiper';
 import customerInfo from './customerInfo.json'
+import sally from './sally.svg'
 
 // Import Swiper styles
 import "swiper/css";
@@ -29,7 +30,7 @@ export default function Slider() {
                 { customerInfo.map((customer, index) =>
                     <SwiperSlide key={index}>
                         <CustomersCard key={index}
-                                       img={customer.img}
+                                       img={`${sally}`}
                                        name={customer.name}
                                        surname={customer.surname}
                                        text={customer.text}/>

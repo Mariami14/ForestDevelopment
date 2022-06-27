@@ -20,16 +20,18 @@ import {DescrBtn, DescrBtnLink} from "../MainPage/MainPageElements";
 import {FooterBg, FooterIcon, FooterIcons} from "../Footer/FooterElemet";
 import {FacebookIcon, InstagramIcon, LinkedinIcon, WhatsappIcon} from "../svg";
 import {useForm} from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import axios from "../../axios";
 
 
-const LoginElements = () => {
+const Signin = ({setUserInfo}) => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const password = useState({});
+    const [user , setUser] = useState({});
+    const history = useNavigate();
 
     const onSubmit = data =>{
-        console.log(data)
+
         axios.get('http://localhost:8080/customer-service-api/authentication', {
             params:{
                 'username': data['userName'],
@@ -37,21 +39,36 @@ const LoginElements = () => {
             }
 
         }).then((response) => {
-            console.log(response);
+            setUser(response.data);
+            setUserInfo(response.data);
+            localStorage.setItem('user',JSON.stringify(response.data));
+            if (user.userRole === "VOLUNTEER" ) {
+                history("/Volantor");
+                console.log(user);
+            }
+            else if (user.userRole === "USER") {
+                history("/Benefactor");
+                console.log(user);
+            }
+            else if (user.userRole === "ADMIN") {
+                history("/Benefactor");
+                console.log(user);
+            }
+
         })
     }
 
 
-    const [userInfo, setUserInfo] = useState({});
-
-    const handleChange = e => {
-        const {name, value} = e.target;
-
-        setUserInfo(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
+    // const [userInfo, setUserInfo] = useState({});
+    //
+    // const handleChange = e => {
+    //     const {name, value} = e.target;
+    //
+    //     setUserInfo(prevState => ({
+    //         ...prevState,
+    //         [name]: value
+    //     }));
+    // };
 
 
 
@@ -105,4 +122,4 @@ const LoginElements = () => {
 );
 };
 
-export default LoginElements;
+export default Signin;

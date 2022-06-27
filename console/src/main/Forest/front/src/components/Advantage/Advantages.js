@@ -6,10 +6,7 @@ const Advantages = (props) => {
             <div className="flex-shrink-0">
                 <img src={props.src} alt=""/>
             </div>
-            <div className="ml-6 text-sm font-light">
-                <p className={'font-normal text-lg mb-2 font-bold'}>{props.header}</p>
-                <p style={{color:'#606E79'}}>{props.text}</p>
-            </div>
+
         </div>
     );
 };

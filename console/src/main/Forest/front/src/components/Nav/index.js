@@ -15,6 +15,8 @@ const Navigation = () => {
                     <NavLink  offset= {-70} to='footer'>Contact</NavLink>
                     <NavBtn offset= {-70} to="/Login">Login</NavBtn>
                     <NavBtn offset= {-70} to="/Volantor">Volantor</NavBtn>
+                    <NavBtn offset= {-70} to="/Benefactor">Benefactor</NavBtn>
+                    <NavBtn offset= {-70} to="/VolantorProfile">VolantorProfile</NavBtn>
                 </NavLinks>
             </NavContainer>
         </Nav>
