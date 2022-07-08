@@ -14,7 +14,7 @@ import {
     PageCreateBtn,
     PageCreateBtnLink,
     DescrText,
-    PageCreateText, Registr, Registerbtn,Error
+    PageCreateText, Registr, Registerbtn,Error,LoginForm
 } from "./LoginElements";
 import {DescrBtn, DescrBtnLink} from "../MainPage/MainPageElements";
 import {FooterBg, FooterIcon, FooterIcons} from "../Footer/FooterElemet";
@@ -39,13 +39,14 @@ const LoginElements = () => {
             email: data['email'],
             userName: data['userName'],
             password: data['password'],
-            userRole: 'USER',
+            userRole: data['role'],
             id:0
         }).then((response) => {
-            console.log(response);
+            console.log(response.data);
         })
     }
     console.log(errors);
+
 
     const [userInfo, setUserInfo] = useState({});
 
@@ -101,7 +102,7 @@ const LoginElements = () => {
                         </InputElements>
                         <Registr>
 
-                            <form onSubmit={handleSubmit(onSubmit)}>
+                            <LoginForm onSubmit={handleSubmit(onSubmit)}>
                                 <input type="text" placeholder="Enter Firstname" {...register("firstName", {required: "You must specify a Firstname", maxLength:{value: 255, message: "Firstname longer than 255 characters"}, minLength: {value: 3, message: "Firstname must have at least 3 characters"}})} />
                                 <input type="text" placeholder="Enter Lastname" {...register("lastName", {required: "You must specify a Lastname", maxLength:{value: 255, message: "Lastname longer than 255 characters"}, minLength: {value: 3, message: "Lastname must have at least 3 characters"}})} />
                                 <input type="text" placeholder="Enter Email" {...register("email", {required: "You must specify a Email",  pattern:{value:/^\S+@\S+$/i,message: "Incorrect Email"},maxLength:{value: 255, message: "Email longer than 255 characters"}, minLength: {value: 8, message: "Email must have at least 8 characters"} })} />
@@ -121,7 +122,7 @@ const LoginElements = () => {
 
 
                                 <Registerbtn type="submit" >Register</Registerbtn>
-                            </form>
+                            </LoginForm>
                         </Registr>
                     </PageCreate>
                 </Regform>

@@ -5,6 +5,8 @@ import CustomersCard from "./CustomersCard";
 import { Autoplay } from 'swiper';
 import customerInfo from './customerInfo.json'
 import sally from './sally.svg'
+import lena from '../../images/customers/lena.svg'
+
 
 // Import Swiper styles
 import "swiper/css";

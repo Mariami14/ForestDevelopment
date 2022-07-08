@@ -2,19 +2,14 @@
 [
 
     {
-        "img" : "sally",
+        "img" : "./sally.svg",
         "name" : "სალი",
         "surname" : "დოლაძე",
         "text" : "“საინტერესო იდეა,აქტუალური პრობლემაა წამოჭრილი და ჩემი აზრით ერთერთი ყველაზე ეფექტური გადაჭრის გზაა”"
     },
+
     {
-        "img" : "./sally.svg",
-        "name" : "Monica",
-        "surname" : "München",
-        "text" : "“... die App kann ich empfehlen, da man Singles trifft, die wirklich auf der Suche nach einer festen Beziehung sind ...”"
-    },
-    {
-        "img" : "./images/customers/lena.svg",
+        "img" : "lena",
         "name" : "Lena",
         "surname" : "Berlin",
         "text" : "“... die App kann ich empfehlen, da man Singles trifft, die wirklich auf der Suche nach einer festen Beziehung sind ...”"

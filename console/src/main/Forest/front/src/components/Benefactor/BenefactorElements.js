@@ -173,7 +173,7 @@ export const Products = styled.div`
 
 export const Product = styled.div`
 
-  width: 45%;
+  width: 40%;
   margin-bottom: 30px;
   border-radius:  20px 20px 20px 20px;
   padding: 10px 20px;

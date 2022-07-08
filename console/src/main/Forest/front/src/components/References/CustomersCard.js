@@ -4,7 +4,7 @@ import {Card} from "./ReferencesElement";
 const CustomersCard = (props) => {
 
     return (
-        <Card>
+        <Card style={{maxWidth:'250px',maxHeight:'326px'}}>
             <div className="flex items-center">
                 <div className="customerImage">
                     <img style={{maxWidth:'64px',maxHeight:'64px'}} src={props.img} alt=""/>

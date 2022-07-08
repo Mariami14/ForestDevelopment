@@ -16,10 +16,18 @@ export const Container = styled.div`
 export const Regform = styled.div`
       display: flex;
       margin: 0 auto ;
-      
-      border: white;
       padding-top: 50px;
       padding-bottom: 50px;
+      max-width: 800px;
+     
+`
+
+
+export const LoginForm = styled.form`
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+
      
 `
 
@@ -38,7 +46,6 @@ export const PageWelcome = styled.div`
 
 export const PageCreate = styled.div`
         background-color: white;
-        min-height: 60vh; 
         width: 50%;
         padding: 10px;
         display: flex;
@@ -70,7 +77,7 @@ export const DescrTextCreate =styled.h1`
           align-items: center;
           font-family: Georgia, serif;
           color: #ad5d50;
-          margin-top: 25%;
+          margin-top: 20px;
 `
 
 export const PageCreateBtn = styled.nav`

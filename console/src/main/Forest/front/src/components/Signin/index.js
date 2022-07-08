@@ -31,7 +31,7 @@ const Signin = ({setUserInfo}) => {
     const history = useNavigate();
 
     const onSubmit = data =>{
-
+        console.log(data);
         axios.get('http://localhost:8080/customer-service-api/authentication', {
             params:{
                 'username': data['userName'],
@@ -56,6 +56,9 @@ const Signin = ({setUserInfo}) => {
             }
 
         })
+            .catch(error => {
+                console.log(error.response)
+            })
     }
 
 
