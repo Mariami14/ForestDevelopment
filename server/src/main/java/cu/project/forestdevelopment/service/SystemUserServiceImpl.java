@@ -47,8 +47,10 @@ public class SystemUserServiceImpl implements SystemUserService {
             throw new Exception("UsersFillAllFieldsValidation");
 
         } else if (systemUserRepository.findSystemUserByUsername(systemUser.getUsername()) != null ) {
-            throw new Exception("ეს momxmarebeli უკვე გამოყენებულია");
+            throw new Exception("Username is already used");
         } else {
+            systemUser.setBalance(0.0);
+            systemUser.setTask(null);
             systemUserRepository.save(systemUser);
             return systemUser;
         }
@@ -62,6 +64,7 @@ public class SystemUserServiceImpl implements SystemUserService {
         oldSystemUser.setUsername(systemUser.getUsername());
         oldSystemUser.setFirstName(systemUser.getFirstName()); // transactional am manipulaciebis temashi shuashi rom moxdes
         // yvela veli unda iyos chasetili old-Shi axalidan (lanas gadmocemulidan)
+        //todo mteli proeqti ert enaze iyos
         return true;
     }
 

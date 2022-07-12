@@ -1,5 +1,7 @@
 package cu.project.forestdevelopment.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -15,7 +17,19 @@ public class Locations {
 
     private String address;
 
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private Date createLocationsDate;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date createDate;
+    //todo createdate rajandabaa da ratoa bazashiiiiiiii
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
 
     public long getId() {
         return id;
@@ -33,12 +47,12 @@ public class Locations {
         this.address = address;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public Date getCreateLocationsDate() {
+        return createLocationsDate;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setCreateLocationsDate(Date createLocationsDate) {
+        this.createLocationsDate = createLocationsDate;
     }
 
     @Override
@@ -46,7 +60,7 @@ public class Locations {
         return "Locations{" +
                 "id=" + id +
                 ", address='" + address + '\'' +
-                ", createDate=" + createDate +
+                ", createLocationsDate=" + createLocationsDate +
                 '}';
     }
 }

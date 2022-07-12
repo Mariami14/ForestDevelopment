@@ -17,23 +17,39 @@ public class LocationsController {
     private LocationsService locationsService;
 
     @GetMapping("/findall")
-    public List<Locations> findLocations () {return locationsService.findLocations();}
-
-    @PostMapping("/addlocations")
-    public ResponseEntity addLocations (@RequestBody Locations locations) {
+    public ResponseEntity findLocations() throws Exception{
         try {
-           return ResponseEntity.ok(locationsService.addLocations(locations));
-        }
-        catch (Exception e){
+            return ResponseEntity.ok(locationsService.findLocations());
+        } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-    @PutMapping("/updatelocations")
-     public  boolean updateLocations (@RequestBody Locations locations){
-        return locationsService.updateLocations(locations);
+
+    @PostMapping("/addlocations")
+    public ResponseEntity addLocations(@RequestBody Locations locations) throws Exception{
+        try {
+            return ResponseEntity.ok(locationsService.addLocations(locations));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
+
+    @PutMapping("/updatelocations")
+    public ResponseEntity updateLocations(@RequestBody Locations locations) throws Exception{
+        try {
+            return ResponseEntity.ok(locationsService.updateLocations(locations));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
     @DeleteMapping("/deletelocations")
-     public boolean deleteLocations (@RequestParam Long id){
-        return locationsService.deleteLocations(id);
+    public ResponseEntity deleteLocations(@RequestParam Long id) throws Exception{
+
+        try {
+            return ResponseEntity.ok(locationsService.deleteLocations(id));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 }

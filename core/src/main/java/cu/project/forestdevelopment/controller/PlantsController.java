@@ -26,18 +26,33 @@ public class PlantsController {
     }
 
     @PutMapping("/updateplant")
-    public boolean updatePlants (@RequestBody Plants plants){
-        return plantsService.updatePlants(plants);
+    public ResponseEntity updatePlants (@RequestBody Plants plants) throws Exception{
+        try {
+            return ResponseEntity.ok(plantsService.updatePlants(plants));
+        }
+        catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
-    @DeleteMapping("/deletemapping")
-    public boolean deletePlants(@RequestParam Long id){
-        return plantsService.deletePlants(id);
+    @DeleteMapping("/deleteplants")
+    public ResponseEntity deletePlants(@RequestParam Long id) throws Exception{
+        try {
+            return ResponseEntity.ok(plantsService.deletePlants(id));
+        }
+        catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @GetMapping("/findplants")
-    public List<Plants> findplants() {
-        return plantsService.findPlants();
+    public ResponseEntity findplants() throws Exception{
+        try {
+            return ResponseEntity.ok(plantsService.findPlants());
+        }
+        catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
 // todo pagination

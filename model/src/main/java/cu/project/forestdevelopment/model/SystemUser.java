@@ -28,12 +28,13 @@ public class SystemUser {
 
     private String username;
 
-/*
-    private List<Progress> listOfActivity = new ArrayList<>(); // maifiqreee
-*/
-
     @Enumerated(EnumType.STRING) //With @Enumerated(EnumType.STRING), we can safely add new enum values or change our enum's order. However, renaming an enum value will still break the database data.
     private SystemUserRole userRole;
+
+    private Double balance;
+
+    @OneToOne
+    private Tasks task;
 
     public SystemUser(String firstName, String lastName, String email, String password, SystemUserRole userRole) {
         this.firstName = firstName;
@@ -98,6 +99,22 @@ public class SystemUser {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
+
+    public Tasks getTask() {
+        return task;
+    }
+
+    public void setTask(Tasks task) {
+        this.task = task;
     }
 
     @Override

@@ -19,7 +19,7 @@ public class LocationsServiceImpl implements LocationsService{
         if (locations.getAddress()== null){
             throw new Exception("Please Enter address, required field");
         }
-        if (locations.getCreateDate()== null){
+        if (locations.getCreateLocationsDate()== null){
             throw new Exception("Please Enter Date of Creation, required field");
         }
         return locationsRepository.save(locations);
@@ -29,7 +29,7 @@ public class LocationsServiceImpl implements LocationsService{
     public boolean updateLocations(Locations locations) {
         Locations oldLocation = locationsRepository.findById(locations.getId()).orElse(null);
         oldLocation.setAddress(locations.getAddress());
-        oldLocation.setCreateDate(locations.getCreateDate());
+        oldLocation.setCreateLocationsDate(locations.getCreateLocationsDate());
         return true;
     }
 

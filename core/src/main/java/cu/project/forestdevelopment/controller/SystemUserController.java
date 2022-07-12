@@ -17,12 +17,16 @@ public class SystemUserController {
     private SystemUserService systemUserService;
 
     @GetMapping("/findall")
-    public List<SystemUser> findAll() {
-        return systemUserService.findAll();
+    public ResponseEntity findAll() throws Exception{
+        try {
+            return ResponseEntity.ok(systemUserService.findAll());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @PostMapping("/addsystemuser")
-    public ResponseEntity addSystemUser(@RequestBody SystemUser systemUser) {
+    public ResponseEntity addSystemUser(@RequestBody SystemUser systemUser) throws Exception{
         try {
             return ResponseEntity.ok(systemUserService.addSystemUser(systemUser));
         } catch (Exception e) {
@@ -31,19 +35,32 @@ public class SystemUserController {
 
     }
 
-    @GetMapping( "/authentication")
-     public ResponseEntity authentication (@RequestParam String username,@RequestParam String password) throws Exception {
-        return systemUserService.authentication(username, password); }
+    @GetMapping("/authentication")
+    public ResponseEntity authentication(@RequestParam String username, @RequestParam String password) throws Exception {
+        try {
+            return ResponseEntity.ok(systemUserService.authentication(username, password));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 
     @PutMapping("/updatesystemuser")
-    public Boolean updateSystemUser (@RequestBody SystemUser systemUser){
-        return systemUserService.updateSystemUser(systemUser);
+    public ResponseEntity updateSystemUser(@RequestBody SystemUser systemUser) throws Exception {
+        try {
+            return ResponseEntity.ok(systemUserService.updateSystemUser(systemUser));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @DeleteMapping("/deletesystemuser")
-    public Boolean deleteSystemUser (@RequestParam Long id) {return  systemUserService.deleteSystemUser(id); }
-//todo response entity ebia dasamatebeli
+    public ResponseEntity deleteSystemUser(@RequestParam Long id) throws Exception {
+        try {
+            return ResponseEntity.ok(systemUserService.deleteSystemUser(id));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
 
-
+    }
 }
 
