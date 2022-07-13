@@ -15,10 +15,13 @@ import {
     VideoSectionDiv, TextCenter, PlayBtn,Image,Tree
 } from "./videoSectionElement";
 import {CommentIcon, CommentIconWithHeart} from "../AboutUs";
+import Nav from "../Nav";
 
 
 const VideoSection = () => {
     return (
+        <>
+
         <VideoSectionDiv id='videoSection'>
             <Container>
                 <TextArea>
@@ -42,6 +45,7 @@ const VideoSection = () => {
                 </VideoArea>
             </Container>
         </VideoSectionDiv>
+            </>
     );
 };
 

@@ -1,26 +1,28 @@
-import React from 'react';
-import main from './Main.png';
-import {Image, Page, Descr, DescrText, DescrBtn, DescrBtnLink, Container} from "./MainPageElements";
-import {NavBtn, NavBtnLink} from "../Navbar/NavbarElements";
+import React, {useContext} from 'react';
+
+import Nav from "../Nav";
+import VideoSection from "../VideoSection";
+import AboutUs from "../AboutUs/AboutUsElement";
+import References from "../References";
+import Footer from "../Footer";
+import Navigation from "../Nav";
+import AuthContext from "../../context/AuthProvider";
 
 
-const Main = () => {
+const MainPage = () => {
+
+
     return (
-    <Container>
-        <Page>
+        <>
 
-            <Descr>
-               <DescrText>A Beautiful<br></br> Adventure Awaits</DescrText>
-                <DescrBtn>
-                    <DescrBtnLink to="/LearnMore">Learn more</DescrBtnLink>
-                </DescrBtn>
-            </Descr>
-            <Image><img src={main} alt="main" />
-            </Image>
+            <Navigation />
+            <VideoSection />
+            <AboutUs/>
+            <References/>
+            <Footer/>
 
-        </Page>
-    </Container>
+        </>
     );
 };
 
-export default Main;
+export default MainPage;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useContext, useState} from "react";
 import Nav from "../Nav";
 import Footer from "../Footer";
 import {
@@ -18,12 +18,13 @@ import {
     PageCreateText,Registr,Signinbtn,Pic,Products,Product,BtnLink,Btn
 } from "./VolantorElements";
 import logo from "../../images/tomate.png";
+import AuthContext from "../../context/AuthProvider";
 
 
 
 
-const VolantorElements = ({userInfo}) => {
-    console.log(userInfo);
+const VolantorElements = () => {
+    const { auth } = useContext(AuthContext);
     return (
         <>
             <Nav/>
@@ -32,7 +33,7 @@ const VolantorElements = ({userInfo}) => {
                 <Regform>
 
                     <PageCreate>
-                        <MyTitle>Hello, {userInfo.firstName}</MyTitle>
+                        <MyTitle>Hello, {auth.firstName}</MyTitle>
                         <Products>
                             <Product>
                                 <Disc>

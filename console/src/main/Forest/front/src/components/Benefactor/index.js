@@ -1,4 +1,4 @@
-import React , { Component }  from 'react';
+import React, {Component, useContext} from 'react';
 import Nav from "../Nav";
 import Footer from "../Footer";
 import logo from '../../images/tomate.png';
@@ -20,22 +20,24 @@ import {
     PageCreateText,Registr,Signinbtn,Pic,Products,Product,BtnLink,Btn,SelectProcessing,SelectDone
 } from "./BenefactorElements";
 import {EmailName, MyOrderTitle} from "../Volantor/VolantorElements";
+import AuthContext from "../../context/AuthProvider";
 
 
 
-const BenefactorElements = ({userInfo}) => {
 
+const BenefactorElements = () => {
 
+    const { auth,history } = useContext(AuthContext);
     return (
         <>
-            <Nav/>
+            <Nav auth = {auth} history={history}/>
             <Container>
 
                 <Regform>
 
                     <PageCreate>
-                        <MyTitle>Hello, {userInfo.firstName}</MyTitle>
-                        <EmailName>{userInfo.email}</EmailName>
+                        <MyTitle>Hello, {auth.firstName}</MyTitle>
+                        <EmailName>{auth.email}</EmailName>
                         <MyOrderTitle>My Orders</MyOrderTitle>
                         <Products>
                             <Product>

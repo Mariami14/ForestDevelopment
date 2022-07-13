@@ -48,6 +48,22 @@ export const NavLink = styled(Link)`
     }
 `
 
+
+export const NavLinkBtn = styled(LinkR)`
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    padding: 0 20px;
+    cursor: pointer;
+    transition: all 0.2s linear;
+    text-decoration: none;
+    color: #F9F9FA;
+
+    &:hover {
+        color: #DE5B65;
+    }
+`
+
 export const NavBtn = styled(LinkR)`
     position: relative;
     color: #F9F9FA;
@@ -58,10 +74,32 @@ export const NavBtn = styled(LinkR)`
     transition: all 0.2s linear;
     cursor: pointer;
     text-decoration: none;
+    margin-right: 10px;
 
     &:hover {
         background: #DE5B65;
     }
 `
+
+
+export const Btn = styled.button`
+    position: relative;
+    color: #F9F9FA;
+    background: #ad5d50;
+    text-align: center;
+    padding: 10px 24px;
+    border-radius: 12px;
+    border: none;
+    transition: all 0.2s linear;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 10px;
+
+    &:hover {
+        background: #DE5B65;
+    }
+`
+
+
 
 

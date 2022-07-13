@@ -48,7 +48,7 @@ const LoginElements = () => {
     console.log(errors);
 
 
-    const [userInfo, setUserInfo] = useState({});
+
 
     const handleChange = e => {
         const {name, value} = e.target;

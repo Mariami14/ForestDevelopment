@@ -1,5 +1,5 @@
-import React , { Component }  from 'react';
-import Nav from "../Nav";
+import React, {Component, useContext} from 'react';
+
 import Footer from "../Footer";
 import logo from '../../images/tomate.png';
 import Select from 'react-select'
@@ -19,10 +19,12 @@ import {
     DescrText,Drop,Disc,Nm,Loc,Inf,
     PageCreateText,Registr,Signinbtn,Pic,Products,Product,BtnLink,Btn,EmailName,MyOrderTitle
 } from "./VolantorElements";
+import Navigation from "../Nav";
+import AuthContext from "../../context/AuthProvider";
 
 
 
-const VolantorElements = ({userInfo}) => {
+const VolantorElements = () => {
     const options = [
         { value: 'processing', label: 'Processing' },
         { value: 'done', label: 'Done' }
@@ -62,16 +64,18 @@ const VolantorElements = ({userInfo}) => {
             Width='200px'
             options={options} />
     );
+    const { auth } = useContext(AuthContext);
     return (
         <>
-            <Nav/>
+
+            <Navigation/>
             <Container>
 
                 <Regform>
 
                     <PageCreate>
-                        <MyTitle>Hello, {userInfo.firstName}</MyTitle>
-                        <EmailName>{userInfo.email}</EmailName>
+                        <MyTitle>Hello, {auth.firstName}</MyTitle>
+                        <EmailName>{auth.email}</EmailName>
                        <MyOrderTitle>My Orders </MyOrderTitle>
                         <Products>
                             <Product>

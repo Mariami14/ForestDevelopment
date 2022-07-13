@@ -1,11 +1,11 @@
 import React from 'react';
 import Signin from "../components/Signin";
 
-const SigninPage = ({setUserInfo}) => {
+const SigninPage = () => {
 
     return (
         <div>
-            <Signin setUserInfo={setUserInfo}/>
+            <Signin />
         </div>
     );
 };

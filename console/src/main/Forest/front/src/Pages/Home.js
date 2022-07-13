@@ -1,20 +1,22 @@
 import React from 'react';
-import Navigation from "../components/Nav";
+
 import VideoSection from "../components/VideoSection";
 import AboutUs from "../components/AboutUs/AboutUsElement";
 import Advantage from "../components/Advantage";
 import References from "../components/References";
 import Footer from "../components/Footer";
+import Nav from "../components/Nav";
+import Volantor from "../components/Volantor";
+import MainPage from "../components/MainPage";
 
-function Home(props) {
+
+
+function Home() {
     return (
-        <>
-            <Navigation/>
-            <VideoSection/>
-            <AboutUs/>
-            <References/>
-            <Footer/>
-        </>
+  <div>
+
+        <MainPage/>
+    </div>
     );
 }
 

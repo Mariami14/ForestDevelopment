@@ -1,10 +1,10 @@
 import React from 'react';
 import VolantorProfile from "../components/VolantorProfile";
 
-const VolantorProfilePage = ({userInfo}) => {
+const VolantorProfilePage = () => {
     return (
         <div>
-            <VolantorProfile userInfo={userInfo}/>
+            <VolantorProfile/>
         </div>
     );
 };

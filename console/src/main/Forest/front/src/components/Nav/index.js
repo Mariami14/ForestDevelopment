@@ -1,23 +1,40 @@
-import React from 'react';
-import {Nav, NavBtn, NavContainer, NavLink, NavLinks, NavLogo, NavLogoDiv} from "./NavElement";
+import React, {useContext, useEffect, useState} from 'react';
+import {Nav, NavBtn, NavContainer, NavLink, NavLinks, NavLogo, NavLogoDiv,NavLinkBtn,Btn} from "./NavElement";
 import logo from '../../images/logo.png'
+import AuthContext from "../../context/AuthProvider";
+import {useNavigate} from "react-router-dom";
 
 const Navigation = () => {
+    const Navigate = useNavigate();
+    const { setAuth,auth,history } = useContext(AuthContext);
+    const Logout = () =>{
+        localStorage.clear();
+        setAuth(false);
+        Navigate("/")
+
+    };
+
     return (
+
         <Nav>
             <NavContainer>
                 <NavLogoDiv offset= {-100} to='/'>
                     <NavLogo src={logo}/>
                 </NavLogoDiv>
                 <NavLinks>
-                    <NavLink  offset= {-70} to='aboutUs'>About us</NavLink>
-                    <NavLink  offset= {-70} to='references'>Feedback</NavLink>
-                    <NavLink  offset= {-70} to='footer'>Contact</NavLink>
-                    <NavBtn offset= {-70} to="/Login">Login</NavBtn>
-                    <NavBtn offset= {-70} to="/Volantor">Volantor</NavBtn>
+                    <NavLinkBtn to="/">Home</NavLinkBtn>
+                    <NavLink  to='footer'>Contact</NavLink>
+                    {!auth && <NavBtn to="/Login">Login</NavBtn>
+                    }
+                    {auth && <Btn onClick={Logout}>Logout</Btn>}
+
+                    {auth?.userRole != null && <NavBtn  to={history}>My profile</NavBtn>}
+
+                    {/*<NavBtn offset= {-70} to="/Volantor">Volantor</NavBtn>
                     <NavBtn offset= {-70} to="/Benefactor">Benefactor</NavBtn>
                     <NavBtn offset= {-70} to="/VolantorProfile">VolantorProfile</NavBtn>
-                </NavLinks>
+                    <NavBtn offset= {-70} to="/AdminView">AdminView</NavBtn>
+*/}                </NavLinks>
             </NavContainer>
         </Nav>
     );

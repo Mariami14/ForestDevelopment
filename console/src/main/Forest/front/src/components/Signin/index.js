@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
 import Nav from "../Nav";
 import Footer from "../Footer";
+import AuthContext from "../../context/AuthProvider";
 import {
     Image,
     PageWelcome,
@@ -22,44 +22,42 @@ import {FacebookIcon, InstagramIcon, LinkedinIcon, WhatsappIcon} from "../svg";
 import {useForm} from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import axios from "../../axios";
+import VolantorPage from "../../Pages/VolantorPage";
+import Volantor from "../Volantor";
+import { useRef, useState, useEffect, useContext } from 'react';
 
 
-const Signin = ({setUserInfo}) => {
+const Signin = () => {
+
+    const { setAuth } = useContext(AuthContext);
+    const userRef = useRef();
+    const errRef = useRef();
+
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [user , setUser] = useState({});
     const history = useNavigate();
 
-    const onSubmit = data =>{
-        console.log(data);
-        axios.get('http://localhost:8080/customer-service-api/authentication', {
+    const onSubmit = async (data)  =>{
+
+        await axios.get('http://localhost:8080/customer-service-api/authentication', {
             params:{
                 'username': data['userName'],
                 'password': data['password'],
             }
 
         }).then((response) => {
-            setUser(response.data);
-            setUserInfo(response.data);
-            localStorage.setItem('user',JSON.stringify(response.data));
-            if (user.userRole === "VOLUNTEER" ) {
-                history("/Volantor");
-                console.log(user);
-            }
-            else if (user.userRole === "USER") {
-                history("/Benefactor");
-                console.log(user);
-            }
-            else if (user.userRole === "ADMIN") {
-                history("/Benefactor");
-                console.log(user);
-            }
+
+                localStorage.setItem('user',JSON.stringify(response.data));
+                setAuth(response.data);
+                setUser(response.data);
+                history("/");
 
         })
             .catch(error => {
                 console.log(error.response)
             })
-    }
+    };
 
 
     // const [userInfo, setUserInfo] = useState({});
@@ -78,6 +76,7 @@ const Signin = ({setUserInfo}) => {
     return (
         <>
             <Nav/>
+
             <Container>
 
                 <Regform>
@@ -120,6 +119,7 @@ const Signin = ({setUserInfo}) => {
                 </Regform>
             </Container>
             <Footer/>
+
         </>
 
 );
