@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -22,7 +23,9 @@ public class LocationsServiceImpl implements LocationsService{
         if (locations.getCreateLocationsDate()== null){
             throw new Exception("Please Enter Date of Creation, required field");
         }
-        return locationsRepository.save(locations);
+        locations.setCreateLocationsDate(new Date());
+        locationsRepository.save(locations);
+        return null; // todo aq return shi locationsRepository.save(locations) xoarunda iyos? tu null? SHESAMOWMEBELIA
     }
     @Transactional
     @Override

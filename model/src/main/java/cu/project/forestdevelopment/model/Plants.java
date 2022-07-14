@@ -18,6 +18,9 @@ public class Plants {
 
     private int price;
 
+    //todo potoa dasamatebeli
+
+
 
     public Plants(long id, String plantName, String location, int amount, int price, String image) {
         this.id = id;
@@ -70,6 +73,7 @@ public class Plants {
     public void setPrice(int price) {
         this.price = price;
     }
+
 
     @Override
     public String toString() {

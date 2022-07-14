@@ -17,19 +17,9 @@ public class Locations {
 
     private String address;
 
-    @JsonFormat(pattern="yyyy-MM-dd")
     private Date createLocationsDate;
-    @JsonFormat(pattern="yyyy-MM-dd")
-    private Date createDate;
-    //todo createdate rajandabaa da ratoa bazashiiiiiiii
 
-    public Date getCreateDate() {
-        return createDate;
-    }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
 
     public long getId() {
         return id;
@@ -54,6 +44,7 @@ public class Locations {
     public void setCreateLocationsDate(Date createLocationsDate) {
         this.createLocationsDate = createLocationsDate;
     }
+
 
     @Override
     public String toString() {

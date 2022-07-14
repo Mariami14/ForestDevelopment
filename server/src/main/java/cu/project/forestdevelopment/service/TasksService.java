@@ -16,4 +16,8 @@ public interface TasksService {
     List<Tasks> findTasks();
 
     boolean assignTask(Long systemUserId, Long taskId) throws Exception;
+
+    boolean unAssignTask(Long systemUserId, Long taskId) throws Exception;
+
+
 }

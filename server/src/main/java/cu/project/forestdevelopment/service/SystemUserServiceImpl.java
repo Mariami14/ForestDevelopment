@@ -55,16 +55,14 @@ public class SystemUserServiceImpl implements SystemUserService {
             return systemUser;
         }
     }
-
-    @Override
     @Transactional
+    @Override
     public Boolean updateSystemUser(SystemUser systemUser) { // systemuser aris lanas gadmocemuli obj bazidan rac tipma
         // im momentshi chawera olduser aqamde rac ewera
         SystemUser oldSystemUser = systemUserRepository.findById(systemUser.getId()).orElse(null);
         oldSystemUser.setUsername(systemUser.getUsername());
         oldSystemUser.setFirstName(systemUser.getFirstName()); // transactional am manipulaciebis temashi shuashi rom moxdes
         // yvela veli unda iyos chasetili old-Shi axalidan (lanas gadmocemulidan)
-        //todo mteli proeqti ert enaze iyos
         return true;
     }
 
