@@ -17,17 +17,15 @@ public class PlantsServiceImpl implements PlantsService{
 
     @Override
     public Plants addPlants(Plants plants) throws Exception{
-        if (plants.getAmount() == 0) {
-            throw new Exception("Please indicate the price");
-        }
+
         return plantsRepository.save(plants);
     }
     @Transactional
     @Override
     public boolean updatePlants(Plants plants) {
         Plants oldPlants = plantsRepository.findById(plants.getId()).orElse(null);
-        oldPlants.setAmount(plants.getAmount());
-        oldPlants.setPrice(plants.getPrice());
+        oldPlants.setPlantName(plants.getPlantName());
+        oldPlants.setLocation(plants.getLocation());
         return true;
     }
 

@@ -60,4 +60,12 @@ public class TasksController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+    @PostMapping("/unassign-task")
+    public ResponseEntity unAssignTask (@RequestParam Long systemUserId, @RequestParam Long taskId) throws Exception{
+        try {
+            return ResponseEntity.ok(tasksService.unAssignTask(systemUserId, taskId));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 }
