@@ -12,15 +12,12 @@ public class Plants {
 
     private String plantName;
 
-    private String location;
-
     private String imageURL;
 
 
     public Plants(long id, String plantName, String location, int amount, int price, String image) {
         this.id = id;
         this.plantName = plantName;
-        this.location = location;
 
     }
 
@@ -44,14 +41,6 @@ public class Plants {
         this.plantName = plantName;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
     public String getImageURL() {
         return imageURL;
     }
@@ -65,7 +54,6 @@ public class Plants {
         return "Plants{" +
                 "id=" + id +
                 ", plantName='" + plantName + '\'' +
-                ", location='" + location + '\'' +
                 '}';
     }
 }

@@ -25,7 +25,6 @@ public class PlantsServiceImpl implements PlantsService{
     public boolean updatePlants(Plants plants) {
         Plants oldPlants = plantsRepository.findById(plants.getId()).orElse(null);
         oldPlants.setPlantName(plants.getPlantName());
-        oldPlants.setLocation(plants.getLocation());
         return true;
     }
 
