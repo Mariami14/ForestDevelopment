@@ -1,5 +1,7 @@
 package cu.project.forestdevelopment.model;
 
+import cu.project.forestdevelopment.repository.TasksStatus;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -24,9 +26,17 @@ public class Tasks {
     private Plants plants;
 
     @OneToOne
+    private SystemUser volunteer;
+
+    @OneToOne
     private SystemUser systemUser;
 
-    //todo Locations id da plants id rogorc foreign key agvnishno da davajoino?
+    @OneToOne
+    private Locations locations;
+
+    @Enumerated(EnumType.STRING)
+    private TasksStatus tasksStatus;
+
 
     public Long getId() {
         return id;
@@ -68,11 +78,43 @@ public class Tasks {
         this.price = price;
     }
 
+    public SystemUser getVolunteer() {
+        return volunteer;
+    }
+
+    public void setVolunteer(SystemUser volunteer) {
+        this.volunteer = volunteer;
+    }
+
     public SystemUser getSystemUser() {
         return systemUser;
     }
 
     public void setSystemUser(SystemUser systemUser) {
         this.systemUser = systemUser;
+    }
+
+    public TasksStatus getTasksStatus() {
+        return tasksStatus;
+    }
+
+    public void setTasksStatus(TasksStatus tasksStatus) {
+        this.tasksStatus = tasksStatus;
+    }
+
+    public Plants getPlants() {
+        return plants;
+    }
+
+    public void setPlants(Plants plants) {
+        this.plants = plants;
+    }
+
+    public Locations getLocations() {
+        return locations;
+    }
+
+    public void setLocations(Locations locations) {
+        this.locations = locations;
     }
 }
