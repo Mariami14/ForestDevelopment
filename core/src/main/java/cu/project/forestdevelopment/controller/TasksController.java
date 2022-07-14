@@ -68,4 +68,12 @@ public class TasksController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+    @PostMapping("/finish-task")
+    public ResponseEntity finishTask (@RequestParam Long taskId) throws Exception{
+        try {
+            return ResponseEntity.ok(tasksService.finishTask(taskId));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 }
