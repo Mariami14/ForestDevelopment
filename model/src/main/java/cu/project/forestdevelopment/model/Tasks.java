@@ -18,6 +18,8 @@ public class Tasks {
 
     private String description;
 
+    private String address;
+
     private Date createTasksDate;
 
     private Double price;
@@ -30,9 +32,6 @@ public class Tasks {
 
     @OneToOne
     private SystemUser systemUser;
-
-    @OneToOne
-    private Locations locations;
 
     @Enumerated(EnumType.STRING)
     private TasksStatus tasksStatus;
@@ -52,6 +51,14 @@ public class Tasks {
 
     public void setTaskName(String taskName) {
         TaskName = taskName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getDescription() {
@@ -108,13 +115,5 @@ public class Tasks {
 
     public void setPlants(Plants plants) {
         this.plants = plants;
-    }
-
-    public Locations getLocations() {
-        return locations;
-    }
-
-    public void setLocations(Locations locations) {
-        this.locations = locations;
     }
 }
