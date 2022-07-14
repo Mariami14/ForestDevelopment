@@ -22,9 +22,6 @@ public class TasksServiceImpl implements TasksService {
     @Autowired
     private PlantsRepository plantsRepository;
 
-    @Autowired
-    private LocationsRepository locationsRepository;
-
     @Override
     public Tasks addTasks(Tasks tasks) throws Exception {
         if (tasks.getTaskName() == null || tasks.getTaskName().isEmpty()) {
@@ -33,11 +30,14 @@ public class TasksServiceImpl implements TasksService {
         if (tasks.getDescription() == null || tasks.getDescription().isEmpty()) {
             throw new Exception("Please write the description for the task");
         }
-        if (tasks.getLocations() == null || tasks.getPlants() == null) {
+        if (tasks.getAddress() == null) {
             throw new Exception("Please set correct location or plant name");
         }
         if (tasks.getPrice() == null) {
             throw new Exception("Please set correct price");
+        }
+        if (tasks.getPlants() == null) {
+            throw new Exception("Please set correct plants");
         }
 
         tasks.setCreateTasksDate(new Date());
@@ -54,7 +54,8 @@ public class TasksServiceImpl implements TasksService {
         oldTasks.setTaskName(tasks.getTaskName());
         oldTasks.setPrice(tasks.getPrice());
         oldTasks.setDescription(tasks.getDescription());
-        oldTasks.setSystemUser(tasks.getSystemUser()); // todo systemuserze davtovo??????????????
+        oldTasks.setPlants(tasks.getPlants());
+        oldTasks.setAddress(tasks.getAddress());
         return true;
     }
 
@@ -112,13 +113,51 @@ public class TasksServiceImpl implements TasksService {
 
     @Override
     public boolean unAssignTask(Long systemUserId, Long taskId) throws Exception {
+        SystemUser userFromDB = systemUserRepository.findById(systemUserId).orElse(null);
+        Tasks taskFromDB = tasksRepository.findById(taskId).orElse(null);
+
+        if (userFromDB == null || taskFromDB == null) {
+            throw new Exception("User or Task not found");
+        }
+
+        if (userFromDB.getUserRole() == SystemUserRole.USER) {
+            if (userFromDB.getTask() != null && taskFromDB.getSystemUser() != null && taskFromDB.getVolunteer() == null) { //minichebamde vamowmebt task aqvs tu ara, ert users erti task
+                userFromDB.setTask(null);
+                taskFromDB.setSystemUser(null);
+                taskFromDB.setTasksStatus(TasksStatus.UNASSIGNED);
+                return true;
+            }
+            throw new Exception("you can't unassigned this task");
+        }
+
+        if (userFromDB.getUserRole() == SystemUserRole.VOLUNTEER) {
+            if (userFromDB.getTask() != null && taskFromDB.getVolunteer() != null) {
+                userFromDB.setTask(null);
+                taskFromDB.setVolunteer(null);
+                taskFromDB.setTasksStatus(TasksStatus.PURCHASED);
+                return true;
+            }
+            throw new Exception("Volunteer already has assigned task");
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean finishTask(Long taskId) {
+        Tasks task = tasksRepository.getById(taskId);
+        SystemUser volunteer = systemUserRepository.getById(task.getVolunteer().getId());
+        SystemUser systemUser = systemUserRepository.getById(task.getSystemUser().getId());
+        if (task.getTasksStatus() == TasksStatus.IN_PROGRESS) {
+            volunteer.setTask(null);
+            systemUser.setTask(null);
+            task.setSystemUser(null);
+            task.setVolunteer(null);
+            task.setTasksStatus(TasksStatus.DONE);
+            return true;
+        }
         return false;
     }
 }
-//todo assign msgavsi metodis shemogeba rom unassign qnas da mere nullzwe shemowmdes?
-//todo volonteer vumatebt feedback is vels
-//todo NIKAS MOWERILEBI CHATSHI
-//todo tasks emateba axali field status da enums klasi davamatot in progress, done, unassigned
-//todo metodi romelic gadaiyvans statusebshi , marto volonteer gaauqmebs tasks - lanam marto volonteer gauketos unassign
-//todo funqcionali avuxsnat lanas, tu sistemashi shedis volonteer ar uchandes pasi gaitvaliswinos
+
 

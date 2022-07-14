@@ -19,5 +19,5 @@ public interface TasksService {
 
     boolean unAssignTask(Long systemUserId, Long taskId) throws Exception;
 
-
+    boolean finishTask(Long taskId);
 }
