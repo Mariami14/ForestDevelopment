@@ -14,20 +14,14 @@ public class Plants {
 
     private String location;
 
-    private int amount;
-
-    private int price;
-
-    //todo potoa dasamatebeli
-
+    private String imageURL;
 
 
     public Plants(long id, String plantName, String location, int amount, int price, String image) {
         this.id = id;
         this.plantName = plantName;
         this.location = location;
-        this.amount = amount;
-        this.price = price;
+
     }
 
     public Plants() {
@@ -58,22 +52,13 @@ public class Plants {
         this.location = location;
     }
 
-    public int getAmount() {
-        return amount;
+    public String getImageURL() {
+        return imageURL;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
 
     @Override
     public String toString() {
@@ -81,8 +66,6 @@ public class Plants {
                 "id=" + id +
                 ", plantName='" + plantName + '\'' +
                 ", location='" + location + '\'' +
-                ", amount=" + amount +
-                ", price=" + price +
                 '}';
     }
 }

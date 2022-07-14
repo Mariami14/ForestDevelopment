@@ -26,6 +26,9 @@ public class Tasks {
     private Plants plants;
 
     @OneToOne
+    private SystemUser volunteer;
+
+    @OneToOne
     private SystemUser systemUser;
 
     @OneToOne
@@ -73,6 +76,14 @@ public class Tasks {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public SystemUser getVolunteer() {
+        return volunteer;
+    }
+
+    public void setVolunteer(SystemUser volunteer) {
+        this.volunteer = volunteer;
     }
 
     public SystemUser getSystemUser() {

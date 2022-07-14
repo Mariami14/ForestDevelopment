@@ -1,7 +1,5 @@
 package cu.project.forestdevelopment.service;
 
-import cu.project.forestdevelopment.model.Locations;
-import cu.project.forestdevelopment.model.Plants;
 import cu.project.forestdevelopment.model.SystemUser;
 import cu.project.forestdevelopment.model.Tasks;
 import cu.project.forestdevelopment.repository.*;
@@ -41,17 +39,13 @@ public class TasksServiceImpl implements TasksService {
         if (tasks.getPrice() == null) {
             throw new Exception("Please set correct price");
         }
-        tasks.getTasksStatus(TasksStatus.UNASSIGNED);
-
-        /*Plants plantFromDB = plantsRepository.findById(tasks.getPlants())
-        Locations locationFromDB = locationsRepository.findById(locationId).orElse(null);
-        if (plantFromDB == null || locationFromDB == null) {
-            throw new Exception("Plant or Location not found");
-        }*/
 
         tasks.setCreateTasksDate(new Date());
-        tasksRepository.save(tasks);
-        return null;
+        tasks.setTasksStatus(TasksStatus.UNASSIGNED);
+        tasks.setSystemUser(null);
+        tasks.setVolunteer(null);
+
+        return tasksRepository.save(tasks);
     }
     @Transactional
     @Override
@@ -95,20 +89,19 @@ public class TasksServiceImpl implements TasksService {
             if (userFromDB.getTask() == null || taskFromDB.getSystemUser() == null) { //minichebamde vamowmebt task aqvs tu ara, ert users erti task
                 userFromDB.setTask(taskFromDB);
                 taskFromDB.setSystemUser(userFromDB);
+                taskFromDB.setTasksStatus(TasksStatus.PURCHASED);
                 return true;
             }
             throw new Exception("User already has assigned task");
-        } else if (userFromDB.getUserRole() == SystemUserRole.USER && userFromDB.getBalance() - taskFromDB.getPrice() < 0
-            /* || plantFromDB.getAmount() * plantFromDB.getPrice() < userFromDB.getBalance()*/) {//todo am vels ra vuyot?
+        } else if (userFromDB.getUserRole() == SystemUserRole.USER && userFromDB.getBalance() - taskFromDB.getPrice() < 0) {
             throw new Exception("You don't have enough balance");
         }
 
         if (userFromDB.getUserRole() == SystemUserRole.VOLUNTEER) {
             if (userFromDB.getTask() == null || taskFromDB.getSystemUser() == null) {
                 userFromDB.setTask(taskFromDB);
-                taskFromDB.setSystemUser(userFromDB);
-            if (userFromDB.getUserRole() == TasksStatus.)// tu task ar aqvs aris assigned an in progress, in progress tu aris assigned  mara araa done
-                //aq enicheba statusi set status unassign/assign
+                taskFromDB.setVolunteer(userFromDB);
+                taskFromDB.setTasksStatus(TasksStatus.IN_PROGRESS);
                 return true;
             }
             throw new Exception("Volunteer already has assigned task");
@@ -122,7 +115,7 @@ public class TasksServiceImpl implements TasksService {
         return false;
     }
 }
-//todo 1. taskebis implementacia + 2. assign msgavsi metodis shemogeba rom unassign qnas da mere nullzwe shemowmdes?
+//todo assign msgavsi metodis shemogeba rom unassign qnas da mere nullzwe shemowmdes?
 //todo volonteer vumatebt feedback is vels
 //todo NIKAS MOWERILEBI CHATSHI
 //todo tasks emateba axali field status da enums klasi davamatot in progress, done, unassigned

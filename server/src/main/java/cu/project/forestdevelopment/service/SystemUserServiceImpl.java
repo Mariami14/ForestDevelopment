@@ -44,7 +44,7 @@ public class SystemUserServiceImpl implements SystemUserService {
                 || systemUser.getPassword().isEmpty()
                 || systemUser.getUsername().isEmpty())
         {
-            throw new Exception("UsersFillAllFieldsValidation");
+            throw new Exception("Users FillAllFieldsValidation");
 
         } else if (systemUserRepository.findSystemUserByUsername(systemUser.getUsername()) != null ) {
             throw new Exception("Username is already used");

@@ -54,6 +54,4 @@ public class PlantsController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-
-// todo pagination
 }
