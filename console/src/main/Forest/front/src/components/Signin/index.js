@@ -25,11 +25,12 @@ import axios from "../../axios";
 import VolantorPage from "../../Pages/VolantorPage";
 import Volantor from "../Volantor";
 import { useRef, useState, useEffect, useContext } from 'react';
+import './SigninStyle.css';
 
 
 const Signin = () => {
 
-    const { setAuth } = useContext(AuthContext);
+    const { setAuth ,auth} = useContext(AuthContext);
     const userRef = useRef();
     const errRef = useRef();
 
@@ -47,14 +48,19 @@ const Signin = () => {
             }
 
         }).then((response) => {
+                sessionStorage.setItem('user',JSON.stringify(response.data.body));
+                setAuth(response.data.body);
+                console.log(response.data.body);
 
-                localStorage.setItem('user',JSON.stringify(response.data));
-                setAuth(response.data);
-                setUser(response.data);
-                history("/");
+                setTimeout( () => {
+                    if (response.data.body.userRole == "ADMIN" ) {
+                        history("/AdminView");
+                    } else {
+                        history("/");
+                    }
+                },300)
 
-        })
-            .catch(error => {
+        }).catch(error => {
                 console.log(error.response)
             })
     };

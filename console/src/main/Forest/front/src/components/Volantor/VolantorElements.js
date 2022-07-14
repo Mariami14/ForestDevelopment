@@ -74,6 +74,44 @@ export const PageCreateBtn = styled.nav`
         
 `;
 
+
+
+export const NavBtnDisc = styled.button`
+      background-color: #b0aca2;
+      width: 160px;
+      color: white;
+      align-items: center;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-left: 30px;
+      opacity: 0.9;
+        &:hover{
+         opacity:1;} 
+    
+`
+
+export const UseInfo = styled.div`
+  display: flex;
+  flex-direction: revert;
+    
+`
+
+export const TextEquip = styled.p`
+text-align: center;
+color: #7a7a7a;
+    
+`
+
+export const TextUser = styled.p`
+text-align: center;
+color: #7a7a7a;
+    
+`
+
+
+
+
 export const PageCreateBtnLink = styled(Link)`
         border-radius: 2px;
         padding: 10px 30px;

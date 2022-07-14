@@ -4,6 +4,8 @@
     box-sizing: border-box;
 }
 
+
+
 .swiper-slide {
     width: 50% !important;
 }
@@ -44,7 +46,7 @@ label{
     font-size: 14px;
 }
 
-/*input[type='radio']:after {
+input[type='radio']:after {
     width: 10px;
     height: 10px;
     border-radius: 15px;
@@ -82,5 +84,5 @@ input[type=text], input[type=password] {
 input[type=text]:focus, input[type=password]:focus {
     background-color: #ddd;
     outline: none;
-}*/
+}
 

@@ -6,12 +6,11 @@ import {useNavigate} from "react-router-dom";
 
 const Navigation = () => {
     const Navigate = useNavigate();
-    const { setAuth,auth,history } = useContext(AuthContext);
+    const { setAuth,auth,history} = useContext(AuthContext);
     const Logout = () =>{
-        localStorage.clear();
+        localStorage.removeItem('user');
         setAuth(false);
         Navigate("/")
-
     };
 
     return (
@@ -24,6 +23,7 @@ const Navigation = () => {
                 <NavLinks>
                     <NavLinkBtn to="/">Home</NavLinkBtn>
                     <NavLink  to='footer'>Contact</NavLink>
+
                     {!auth && <NavBtn to="/Login">Login</NavBtn>
                     }
                     {auth && <Btn onClick={Logout}>Logout</Btn>}

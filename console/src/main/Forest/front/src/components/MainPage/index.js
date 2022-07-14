@@ -11,7 +11,6 @@ import AuthContext from "../../context/AuthProvider";
 
 const MainPage = () => {
 
-
     return (
         <>
 

@@ -10,6 +10,7 @@ import BenefactorPage from "./Pages/BenefactorPage";
 import VolantorProfilePage from "./Pages/VolantorProfilePage";
 import AdminPage from "./Pages/AdminPage";
 import AuthContext, { AuthProvider } from './context/AuthProvider';
+import AdminViewAddTask from "./components/Admin/AdminViewAddTask";
 
 
 
@@ -17,7 +18,7 @@ import AuthContext, { AuthProvider } from './context/AuthProvider';
 function App() {
 
   const { auth } = useContext(AuthContext);
-  console.log(auth)
+
   return (
   <Router>
     <Routes>
@@ -31,6 +32,7 @@ function App() {
         <Route path="/Benefactor" exact element={<BenefactorPage />}/>
         <Route path="/VolantorProfile" exact element={<VolantorProfilePage />}/>
         <Route path="/AdminView" exact element={<AdminPage/>}/>
+        <Route path="/AdminViewaddTask" exact element={<AdminViewAddTask/>}/>
        </>:
           <>
             <Route path="/Login" exact element={<LoginPage/>}/>

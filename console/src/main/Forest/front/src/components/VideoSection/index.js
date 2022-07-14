@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import appStore from '../../images/appStore.svg';
 import googlePlay from '../../images/googlePlay.svg';
 import playbtn from '../../images/playBtn.svg';
-import main from '../../images/Main.png';
+import SoundOff from '../../images/soundOff.svg';
+import SoundOn from '../../images/soundOn.svg';
 import tree from '../../images/MainTree.png';
 import forest from '../../images/forest.jpg';
 import commentIconWithHeart from '../../images/green.png'
@@ -12,13 +13,15 @@ import {
     TextArea, TextHeader, Text,
     TextHeaderSub,
     VideoArea, VideoDiv,
-    VideoSectionDiv, TextCenter, PlayBtn,Image,Tree
+    VideoSectionDiv, TextCenter, PlayBtn,Image,Tree,VideoWrapper
 } from "./videoSectionElement";
 import {CommentIcon, CommentIconWithHeart} from "../AboutUs";
 import Nav from "../Nav";
 
 
+
 const VideoSection = () => {
+    const [muted, setMuted] = useState(true);
     return (
         <>
 
@@ -35,14 +38,25 @@ const VideoSection = () => {
                         <b>The development process has involved consultation and workshops with a range of stakeholders.</b>
                     </TextHeaderSub>
                 </TextArea>
-                <VideoArea>
-                    <VideoDiv>
-                        <PlayBtn src={playbtn}/>
-                        <Image><Imgforest src={forest} alt="main" />
-                        </Image>
-                    </VideoDiv>
-
-                </VideoArea>
+                        <VideoArea>
+                            <VideoWrapper>
+                                <PlayBtn src={ muted ? SoundOff : SoundOn} onClick={ () => setMuted(!muted) }/>
+                                <VideoDiv
+                                    url={'https://www.youtube.com/embed/_dWJVHIE9S8&ab_channel=Ecosia'}
+                                    autoPlay
+                                    muted = { muted }
+                                    volume = { 0.4 }
+                                    loop
+                                    playing={true}
+                                >
+                                </VideoDiv>
+                            </VideoWrapper>
+                            <Text>
+                                <div className='text-center font-[400]'>
+                                    Schau dir unser Konzept an
+                                </div>
+                            </Text>
+                        </VideoArea>
             </Container>
         </VideoSectionDiv>
             </>
