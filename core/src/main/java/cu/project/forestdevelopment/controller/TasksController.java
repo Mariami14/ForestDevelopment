@@ -1,6 +1,7 @@
 package cu.project.forestdevelopment.controller;
 
 
+import cu.project.forestdevelopment.AssaigneDto;
 import cu.project.forestdevelopment.model.SystemUser;
 import cu.project.forestdevelopment.model.Tasks;
 import cu.project.forestdevelopment.service.TasksService;
@@ -53,17 +54,26 @@ public class TasksController {
     }
 
     @PostMapping("/assign-task")
-    public ResponseEntity assignTask(@RequestParam Long systemUserId, @RequestParam Long taskId) throws Exception {
+    public ResponseEntity assignTask(@RequestBody AssaigneDto assaigneDto) throws Exception {
         try {
-            return ResponseEntity.ok(tasksService.assignTask(systemUserId, taskId));
+            return ResponseEntity.ok(tasksService.assignTask(assaigneDto.systemUserId, assaigneDto.taskId));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
     @PostMapping("/unassign-task")
-    public ResponseEntity unAssignTask (@RequestParam Long systemUserId, @RequestParam Long taskId) throws Exception{
+    public ResponseEntity unAssignTask (@RequestBody AssaigneDto assaigneDto) throws Exception{
         try {
-            return ResponseEntity.ok(tasksService.unAssignTask(systemUserId, taskId));
+            return ResponseEntity.ok(tasksService.unAssignTask(assaigneDto.systemUserId, assaigneDto.taskId));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @PutMapping("/finish-task/{taskId}")
+    public ResponseEntity finishTask(@PathVariable Long taskId) throws Exception{
+        try {
+            return ResponseEntity.ok(tasksService.finishTask(taskId));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }

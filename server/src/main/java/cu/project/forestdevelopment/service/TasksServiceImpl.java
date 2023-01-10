@@ -87,10 +87,11 @@ public class TasksServiceImpl implements TasksService {
 
 
         if (userFromDB.getUserRole() == SystemUserRole.USER && userFromDB.getBalance() - taskFromDB.getPrice() >= 0) {
-            if (userFromDB.getTask() == null || taskFromDB.getSystemUser() == null) { //minichebamde vamowmebt task aqvs tu ara, ert users erti task
-                userFromDB.setTask(taskFromDB);
+            if (taskFromDB.getSystemUser() == null) { //minichebamde vamowmebt task aqvs tu ara, ert users erti task
                 taskFromDB.setSystemUser(userFromDB);
                 taskFromDB.setTasksStatus(TasksStatus.PURCHASED);
+                systemUserRepository.flush();
+                tasksRepository.flush();
                 return true;
             }
             throw new Exception("User already has assigned task");
@@ -99,10 +100,11 @@ public class TasksServiceImpl implements TasksService {
         }
 
         if (userFromDB.getUserRole() == SystemUserRole.VOLUNTEER) {
-            if (userFromDB.getTask() == null || taskFromDB.getSystemUser() == null) {
-                userFromDB.setTask(taskFromDB);
+            if (taskFromDB.getVolunteer() == null) {
                 taskFromDB.setVolunteer(userFromDB);
                 taskFromDB.setTasksStatus(TasksStatus.IN_PROGRESS);
+                systemUserRepository.flush();
+                tasksRepository.flush();
                 return true;
             }
             throw new Exception("Volunteer already has assigned task");
@@ -121,20 +123,22 @@ public class TasksServiceImpl implements TasksService {
         }
 
         if (userFromDB.getUserRole() == SystemUserRole.USER) {
-            if (userFromDB.getTask() != null && taskFromDB.getSystemUser() != null && taskFromDB.getVolunteer() == null) { //minichebamde vamowmebt task aqvs tu ara, ert users erti task
-                userFromDB.setTask(null);
+            if (taskFromDB.getSystemUser() != null && taskFromDB.getVolunteer() == null) { //minichebamde vamowmebt task aqvs tu ara, ert users erti task
                 taskFromDB.setSystemUser(null);
                 taskFromDB.setTasksStatus(TasksStatus.UNASSIGNED);
+                systemUserRepository.flush();
+                tasksRepository.flush();
                 return true;
             }
             throw new Exception("you can't unassigned this task");
         }
 
         if (userFromDB.getUserRole() == SystemUserRole.VOLUNTEER) {
-            if (userFromDB.getTask() != null && taskFromDB.getVolunteer() != null) {
-                userFromDB.setTask(null);
+            if (taskFromDB.getVolunteer() != null) {
                 taskFromDB.setVolunteer(null);
                 taskFromDB.setTasksStatus(TasksStatus.PURCHASED);
+                systemUserRepository.flush();
+                tasksRepository.flush();
                 return true;
             }
             throw new Exception("Volunteer already has assigned task");
@@ -146,14 +150,11 @@ public class TasksServiceImpl implements TasksService {
     @Override
     public boolean finishTask(Long taskId) {
         Tasks task = tasksRepository.getById(taskId);
-        SystemUser volunteer = systemUserRepository.getById(task.getVolunteer().getId());
-        SystemUser systemUser = systemUserRepository.getById(task.getSystemUser().getId());
         if (task.getTasksStatus() == TasksStatus.IN_PROGRESS) {
-            volunteer.setTask(null);
-            systemUser.setTask(null);
             task.setSystemUser(null);
             task.setVolunteer(null);
             task.setTasksStatus(TasksStatus.DONE);
+            tasksRepository.flush();
             return true;
         }
         return false;
