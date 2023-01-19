@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Nav from "../Nav";
 import Footer from "../Footer";
 import {
@@ -19,12 +19,27 @@ import {
 } from "./VolantorElements";
 import logo from "../../images/tomate.png";
 import AuthContext from "../../context/AuthProvider";
+import axios from "../../axios";
 
 
 
 
 const VolantorElements = () => {
     const { auth } = useContext(AuthContext);
+    useEffect(() => {
+
+        axios.get('http://localhost:8080/tasks-service-api/findtasks', {})
+            .then((response) => {
+
+                response.data.map((data,index)=>{console.log(data)});
+            })
+
+
+    },[]);
+
+
+
+
     return (
         <>
             <Nav/>
@@ -33,7 +48,7 @@ const VolantorElements = () => {
                 <Regform>
 
                     <PageCreate>
-                        <MyTitle>Hello, {auth.firstName}</MyTitle>
+                        <MyTitle></MyTitle>
                         <Products>
                             <Product>
                                 <Disc>

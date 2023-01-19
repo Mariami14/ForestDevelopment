@@ -1,5 +1,6 @@
-import React, {useState,useRef} from 'react';
+import React, {useState, useRef, useContext} from 'react';
 import Nav from "../Nav";
+import './LoginStyle.css';
 import Footer from "../Footer";
 import {
     Image,
@@ -21,48 +22,39 @@ import {FooterBg, FooterIcon, FooterIcons} from "../Footer/FooterElemet";
 import {FacebookIcon, InstagramIcon, LinkedinIcon, WhatsappIcon} from "../svg";
 import axios from "../../axios";
 import { useForm } from 'react-hook-form';
+import AuthContext from "../../context/AuthProvider";
+import './LoginStyle.css';
+import {roRO} from "@material-ui/core/locale";
+import {useNavigate} from "react-router-dom";
+
 
 
 
 const LoginElements = () => {
-
-
-
-    const { register, handleSubmit,watch, formState: { errors } } = useForm();
+    const { setAuth } = useContext(AuthContext);
+    const { userRole, setUserRole } = useState();
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const password = useState({});
     password.current = watch("password", "");
-    const onSubmit = data =>{
-        console.log(data)
-        axios.post('/customer-service-api/addsystemuser', {
-            firstName: data['firstName'],
-            lastName: data['lastName'],
-            email: data['email'],
-            userName: data['userName'],
-            password: data['password'],
-            userRole: data['role'],
-            id:0
-        }).then((response) => {
-            console.log(response.data);
-        })
-    }
-    console.log(errors);
+    const history = useNavigate();
 
-
-
-
-    const handleChange = e => {
-        const {name, value} = e.target;
-
-        setUserInfo(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
-
-
-
-
-
+    const onSubmit = data => {
+            console.log(data);
+            axios.post('/customer-service-api/addsystemuser', {
+                firstName: data['firstName'],
+                lastName: data['lastName'],
+                email: data['email'],
+                username: data['userName'],
+                password: data['password'],
+                userRole: data['userRole'],
+                id: 0
+            }).then((response) => {
+                sessionStorage.setItem('user',JSON.stringify(response.data));
+                console.log(response.data)
+                setAuth(response.data);
+                history("/");
+            })
+        };
     return (
         <>
             <Nav/>
@@ -94,15 +86,27 @@ const LoginElements = () => {
                                 <LinkedinIcon/>
                             </Icon>
                         </Icons>
-                        <InputElements>
-                            <label><input type="radio" value="USER" name="role" checked
-                                          onChange={handleChange}/>Volunteer</label>
-                            <label><input type="radio" value="ADMIN" name="role" onChange={handleChange}/>Sponsor
-                            </label>
-                        </InputElements>
                         <Registr>
 
                             <LoginForm onSubmit={handleSubmit(onSubmit)}>
+                                <InputElements>
+                                    {/*<label>*/}
+                                    {/*    <input type="radio" value="USER" name="role" defaultChecked={true}*/}
+                                    {/*           onChange={handleChange}/>*/}
+                                    {/*    Volunteer</label>*/}
+                                    {/*<label>*/}
+                                    {/*    <input type="radio" value="ADMIN" name="role" onChange={handleChange}/>*/}
+                                    {/*    Sponsor*/}
+                                    {/*</label>*/}
+                                    <label className='appearance-none'>
+                                        Sponsor
+                                        <input className='appearance-none' {...register("userRole")} type="radio" value="USER"  defaultChecked={true}/>
+                                    </label>
+                                    <label className='appearance-none'>
+                                        Volunteer
+                                        <input className='appearance-none' {...register("userRole")} type="radio" value="VOLUNTEER" />
+                                    </label>
+                                </InputElements>
                                 <input type="text" placeholder="Enter Firstname" {...register("firstName", {required: "You must specify a Firstname", maxLength:{value: 255, message: "Firstname longer than 255 characters"}, minLength: {value: 3, message: "Firstname must have at least 3 characters"}})} />
                                 <input type="text" placeholder="Enter Lastname" {...register("lastName", {required: "You must specify a Lastname", maxLength:{value: 255, message: "Lastname longer than 255 characters"}, minLength: {value: 3, message: "Lastname must have at least 3 characters"}})} />
                                 <input type="text" placeholder="Enter Email" {...register("email", {required: "You must specify a Email",  pattern:{value:/^\S+@\S+$/i,message: "Incorrect Email"},maxLength:{value: 255, message: "Email longer than 255 characters"}, minLength: {value: 8, message: "Email must have at least 8 characters"} })} />
@@ -118,8 +122,6 @@ const LoginElements = () => {
                                 {errors.userName && <Error>{errors.userName.message}</Error>}
                                 {errors.password && <Error>{errors.password.message}</Error>}
                                 {errors.passwordRepeat && <Error>{errors.passwordRepeat.message}</Error>}
-
-
 
                                 <Registerbtn type="submit" >Register</Registerbtn>
                             </LoginForm>

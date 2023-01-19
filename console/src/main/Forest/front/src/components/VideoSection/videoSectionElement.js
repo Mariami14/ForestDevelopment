@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ReactPlayer from "react-player";
 
 export const VideoSectionDiv = styled.div`
     margin-top: 104px;
@@ -64,14 +65,18 @@ export const AppStore = styled.img`
 
 `
 
-export const VideoDiv = styled.div`
-    position: relative;
-    content: '';
-    width: 672px;
-    height: 450px;
-    background: #b0aca2;
+export const VideoDiv = styled(ReactPlayer)`
     border-radius: 24px;
-    margin-bottom: 24px;
+    overflow: hidden;
+    width: 100% !important;
+    min-height: 100% !important;
+    margin: 10px auto 24px;
+
+
+    @media (max-width: 1024px){
+        min-height: 240px;
+        margin-top: 40px;
+    }
 `
 export const Image = styled.div`
     
@@ -91,13 +96,7 @@ export const Imgforest = styled.img`
        border-radius: 24px;
     
 `
-export const PlayBtn = styled.img`
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: -125px;
-    
-`
+
 
 export const Tree = styled.img`
     left: 0;
@@ -108,3 +107,33 @@ export const Tree = styled.img`
 export const TextCenter = styled.div`
   text-align: center;
 `
+
+export const VideoWrapper = styled.div`
+  position: relative;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 24px;
+`
+
+export const PlayBtn = styled.img`
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    padding: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -45px;
+    z-index: 99;
+    cursor: pointer;
+
+    @media (max-width: 1024px){
+        left: 20px;
+        top: 80%;
+    }
+
+    &:focus {
+        outline: 0;
+    }
+`
+
+

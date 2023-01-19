@@ -1,4 +1,4 @@
-import React, {Component, useContext} from 'react';
+import React, {Component, useContext, useState} from 'react';
 
 import Footer from "../Footer";
 import logo from '../../images/tomate.png';
@@ -17,14 +17,18 @@ import {
     PageCreateBtn,
     PageCreateBtnLink,
     DescrText,Drop,Disc,Nm,Loc,Inf,
-    PageCreateText,Registr,Signinbtn,Pic,Products,Product,BtnLink,Btn,EmailName,MyOrderTitle
+    PageCreateText,Registr,Signinbtn,Pic,Products,Product,BtnLink,Btn,EmailName,MyOrderTitle,NavBtnDisc,UseInfo
 } from "./VolantorElements";
 import Navigation from "../Nav";
 import AuthContext from "../../context/AuthProvider";
+import {NavBtnAdd} from "../Admin/AdminNavElements";
+import AdminModal from "../Admin/AdminModal";
+import EquipmentModal from "./EquipmentModal"
 
 
 
 const VolantorElements = () => {
+    const [open,isOpen] = useState();
     const options = [
         { value: 'processing', label: 'Processing' },
         { value: 'done', label: 'Done' }
@@ -68,13 +72,17 @@ const VolantorElements = () => {
     return (
         <>
 
+            {open && <EquipmentModal isOpen = {isOpen}/>}
             <Navigation/>
             <Container>
 
                 <Regform>
 
                     <PageCreate>
+                        <UseInfo>
                         <MyTitle>Hello, {auth.firstName}</MyTitle>
+                        <NavBtnDisc  to='/Volantor' onClick = {()=>{isOpen(true)}}>Equipment info</NavBtnDisc>
+                        </UseInfo>
                         <EmailName>{auth.email}</EmailName>
                        <MyOrderTitle>My Orders </MyOrderTitle>
                         <Products>

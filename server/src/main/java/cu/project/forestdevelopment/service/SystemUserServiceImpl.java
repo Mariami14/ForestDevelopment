@@ -49,8 +49,7 @@ public class SystemUserServiceImpl implements SystemUserService {
         } else if (systemUserRepository.findSystemUserByUsername(systemUser.getUsername()) != null ) {
             throw new Exception("Username is already used");
         } else {
-            systemUser.setBalance(0.0);
-            systemUser.setTask(null);
+            systemUser.setBalance(1000.0);
             systemUserRepository.save(systemUser);
             return systemUser;
         }
